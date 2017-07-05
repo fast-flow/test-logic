@@ -14,7 +14,7 @@ it('required', function (done) {
         finish: function (fail, info) {
             expect(fail).to.eql(true)
             expect(info.source[0].error).to.eql(true)
-            expect(info.source[0].msg).to.eql('请输入用户名')
+            expect(info.source[0].msg).to.eql('用户名必填')
             done()
         }
     })
@@ -53,7 +53,7 @@ it('required', function (done) {
         finish: function (fail, info) {
             expect(fail).to.eql(true)
             expect(info.source[0].error).to.eql(true)
-            expect(info.source[0].msg).to.eql('请输入用户名')
+            expect(info.source[0].msg).to.eql('用户名必填')
             expect(info.source[1].tested).to.eql(false)
             done()
         }
