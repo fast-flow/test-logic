@@ -1,7 +1,7 @@
 import TextLogic from "../lib/index"
 import expect from "expect.js"
 const test = new TextLogic()
-it('min-max', function (done) {
+it('min', function (done) {
     test.check({
         value: '3',
         label: '年龄',
@@ -11,7 +11,7 @@ it('min-max', function (done) {
             },
             {
                 min: 4,
-                msg: '{{label}}不能小于{{test.min}}岁,当前输入{{value}}'
+                msg: '{{label}}不能小于{{self.min}}岁,当前输入{{value}}'
             }
         ],
         finish: function (fail, info) {
@@ -32,7 +32,7 @@ it('min-max', function (done) {
             },
             {
                 min: 4,
-                msg: '{{label}}不能小于{{test.min}}岁,当前输入{{value}}'
+                msg: '{{label}}不能小于{{self.min}}岁,当前输入{{value}}'
             }
         ],
         finish: function (fail, info) {
