@@ -15,9 +15,9 @@ it('required', function (done) {
             expect(fail).to.eql(true)
             expect(info.source[0].error).to.eql(true)
             expect(info.source[0].msg).to.eql('用户名必填')
-            done()
         }
     })
+    setTimeout(done, 10)
     test.check({
         value: 'sadasd',
         label: '邮箱',
@@ -55,7 +55,7 @@ it('required', function (done) {
             expect(info.source[0].error).to.eql(true)
             expect(info.source[0].msg).to.eql('用户名必填')
             expect(info.source[1].tested).to.eql(false)
-            done()
         }
     })
+    setTimeout(done, 10)
 })

@@ -25,9 +25,9 @@ it('every default false', function (done) {
             expect(info.source[0].msg).to.eql('用户名不能包含数字')
             expect(info.source[1].tested).to.eql(false)
             expect(info.source[1].error).to.eql(undefined)
-            done()
         }
     })
+    setTimeout(done, 10)
 })
 
 it('every true', function (done) {
@@ -54,7 +54,7 @@ it('every true', function (done) {
             expect(info.source[0].msg).to.eql('用户名不能包含数字')
             expect(info.source[1].error).to.eql(true)
             expect(info.source[1].msg).to.eql('用户名不能包含a')
-            done()
         }
     })
+    setTimeout(done, 10)
 })

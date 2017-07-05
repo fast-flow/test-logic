@@ -19,7 +19,6 @@ it('min', function (done) {
             expect(info.source.length).to.eql(2)
             expect(info.source[0].error).to.eql(false)
             expect(info.source[1].msg).to.eql('年龄不能小于4岁,当前输入3')
-            done()
         }
     })
     test.check({
@@ -41,9 +40,9 @@ it('min', function (done) {
             expect(info.source[0].error).to.eql(true)
             expect(info.source[0].msg).to.eql('年龄必须输入数字')
             expect(info.source[1].tested).to.eql(false)
-            done()
         }
     })
+    setTimeout(done, 10)
 })
 it('max', function (done) {
     test.check({
@@ -63,7 +62,6 @@ it('max', function (done) {
             expect(info.source.length).to.eql(2)
             expect(info.source[0].error).to.eql(false)
             expect(info.source[1].msg).to.eql('年龄不能大于4岁,当前输入6')
-            done()
         }
     })
     test.check({
@@ -83,7 +81,7 @@ it('max', function (done) {
             expect(info.source.length).to.eql(2)
             expect(info.source[0].error).to.eql(false)
             expect(info.source[1].error).to.eql(false)
-            done()
         }
     })
+    setTimeout(done, 10)
 })

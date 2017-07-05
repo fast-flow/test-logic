@@ -17,9 +17,9 @@ it('regexp be true', function (done) {
             expect(info.source.length).to.eql(1)
             expect(info.source[0].error).to.eql(true)
             expect(info.source[0].msg).to.eql('用户名不能包含数字')
-            done()
         }
     })
+    setTimeout(done, 10)
 })
 it('regexp be true', function (done) {
     test.check({
@@ -37,7 +37,7 @@ it('regexp be true', function (done) {
             expect(info.source.length).to.eql(1)
             expect(info.source[0].error).to.eql(true)
             expect(info.source[0].msg).to.eql('用户名必须包含数字')
-            done()
         }
     })
+    setTimeout(done, 10)
 })
