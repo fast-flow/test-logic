@@ -8,14 +8,14 @@ var devConfig = require('../dev-config.js')
 var extend = require('extend')
 var karmaConf = require('./karma.conf').conf
 module.exports = function (config) {
-if (!process.env.SAUCE_USERNAME || !process.env.SAUCE_ACCESS_KEY) {
-    var sauceUserErrorMsg = 'Make sure the SAUCE_USERNAME and SAUCE_ACCESS_KEY environment variables are set.'
-    console.error('---------------')
-    console.error(sauceUserErrorMsg)
-    console.error('---------------')
-    throw new Error(sauceUserErrorMsg)
- }
-  var sauceLabsConfig = {
+    if (!process.env.SAUCE_USERNAME || !process.env.SAUCE_ACCESS_KEY) {
+        var sauceUserErrorMsg = 'Make sure the SAUCE_USERNAME and SAUCE_ACCESS_KEY environment variables are set.'
+        console.error('---------------')
+        console.error(sauceUserErrorMsg)
+        console.error('---------------')
+        throw new Error(sauceUserErrorMsg)
+     }
+    var sauceLabsConfig = {
       frameworks: ['jasmine'],
       reporters: ['progress', 'saucelabs'],
       sauceLabs: {
@@ -37,7 +37,11 @@ if (!process.env.SAUCE_USERNAME || !process.env.SAUCE_ACCESS_KEY) {
       customLaunchers: devConfig.customLaunchers,
       browsers: Object.keys(devConfig.customLaunchers),
       singleRun: true
-  }
-  var ciConfig = extend(true, karmaConf(config), sauceLabsConfig)
-  config.set(ciConfig)
+    }
+    config.lastPlugins = [
+        'karma-phantomjs-launcher',
+        'karma-sauce-launcher'
+    ]
+    var ciConfig = extend(true, karmaConf(config), sauceLabsConfig)
+    config.set(ciConfig)
 }

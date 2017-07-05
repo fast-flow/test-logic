@@ -17,10 +17,26 @@ npm run js
 # npm run js:debug
 ```
 
+## dev-config.js
+
+Read `./dev-config.js`
+
 ## Test
 
 ```shell
 npm run test
+files=test/required.test.js npm run test
+npm run test:ci
+SAUCE_USERNAME=**** SAUCE_ACCESS_KEY=********-****-****-****-******** npm run test:ci
+```
+
+## Release
+
+> Please use Travis build the job, and then released
+
+```shell
+# git push gh-pages  & npm publish
+npm run release
 ```
 
 ## Publish gh-pages
@@ -36,15 +52,6 @@ npm run gh-push
 ```shell
 npm run npm
 cd output && npm publish
-```
-
-## Release
-
-> Please use Travis build the job, and then released
-
-```shell
-# git push gh-pages  & npm publish
-npm run release
 ```
 
 ## Automated Builds

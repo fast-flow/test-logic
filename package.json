@@ -31,7 +31,7 @@
     "s": "node config/static-server.js",
     "gh-push": "node config/gh-push.js",
     "npm": "fis3 release npm -c -d ./output -r ./ -f config/fis-conf.js",
-    "test-ci": "./node_modules/karma/bin/karma start ./config/karma.ci.js",
+    "test:ci": "./node_modules/karma/bin/karma start ./config/karma.ci.js",
     "test": "./node_modules/karma/bin/karma start ./config/karma.conf.js --browsers Chrome",
     "release": "npm run gh && npm run gh-push && npm run npm && cd output && npm publish"
   },

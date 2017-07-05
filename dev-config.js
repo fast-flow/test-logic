@@ -52,9 +52,15 @@ module.exports = {
             )
         })
     },
-    testFile: [
-        'test/**/*.test.js'
-        // 'test/required.test.js'
+    testFiles: [
+        (function () {
+            if (process.env.files) {
+                return process.env.files
+            }
+            else {
+                return 'test/**/*.test.js'
+            }
+        })()
     ],
     // https://saucelabs.com/platforms
     customLaunchers: {

@@ -13,7 +13,7 @@ var karmaConf = function(config) {
         require.resolve('../example/polyfill-lt-ie10.js'),
         require.resolve('../example/polyfill-lte-ie11.js'),
         require.resolve('../example/es6-promise.auto.js')
-      ].concat(devConfig.testFile),
+      ].concat(devConfig.testFiles),
       preprocessors: {
         // add webpack as preprocessor
         'lib/**/*.js': ['webpack', 'sourcemap'],
@@ -30,10 +30,8 @@ var karmaConf = function(config) {
         'karma-webpack',
         'karma-jasmine',
         'karma-sourcemap-loader',
-        'karma-chrome-launcher',
-        'karma-phantomjs-launcher',
-        'karma-sauce-launcher'
-      ],
+        'karma-chrome-launcher'
+      ].concat(config.lastPlugins || []),
 
 
       babelPreprocessor: {
