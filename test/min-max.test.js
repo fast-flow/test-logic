@@ -85,3 +85,88 @@ it('max', function (done) {
     })
     setTimeout(done, 10)
 })
+
+it('min max', function (done) {
+    test.check({
+        value: '3',
+        label: '年龄',
+        test: [
+            {
+                rule: 'number'
+            },
+            {
+                max: 10,
+                min: 4,
+                msg: '{{label}}不能小于{{self.min}}岁和大于{{self.max}},当前输入{{value}}'
+            }
+        ],
+        finish: function (fail, info) {
+            expect(fail).to.eql(true)
+            expect(info.source.length).to.eql(2)
+            expect(info.source[0].error).to.eql(false)
+            expect(info.source[1].msg).to.eql('年龄不能小于4岁和大于10,当前输入3')
+        }
+    })
+    test.check({
+        value: '4',
+        label: '年龄',
+        test: [
+            {
+                rule: 'number'
+            },
+            {
+                max: 10,
+                min: 4,
+                msg: '{{label}}不能小于{{self.min}}岁和大于{{self.max}},当前输入{{value}}'
+            }
+        ],
+        finish: function (fail, info) {
+            expect(fail).to.eql(false)
+            expect(info.source.length).to.eql(2)
+            expect(info.source[0].error).to.eql(false)
+            expect(info.source[1].error).to.eql(false)
+        }
+    })
+    test.check({
+        value: '10',
+        label: '年龄',
+        test: [
+            {
+                rule: 'number'
+            },
+            {
+                max: 10,
+                min: 4,
+                msg: '{{label}}不能小于{{self.min}}岁和大于{{self.max}},当前输入{{value}}'
+            }
+        ],
+        finish: function (fail, info) {
+            expect(fail).to.eql(false)
+            expect(info.source.length).to.eql(2)
+            expect(info.source[0].error).to.eql(false)
+            expect(info.source[1].error).to.eql(false)
+        }
+    })
+    test.check({
+        value: '11',
+        label: '年龄',
+        test: [
+            {
+                rule: 'number'
+            },
+            {
+                max: 10,
+                min: 4,
+                msg: '{{label}}不能小于{{self.min}}岁和大于{{self.max}},当前输入{{value}}'
+            }
+        ],
+        finish: function (fail, info) {
+            expect(fail).to.eql(true)
+            expect(info.source.length).to.eql(2)
+            expect(info.source[0].error).to.eql(false)
+            expect(info.source[1].error).to.eql(true)
+            expect(info.source[1].msg).to.eql('年龄不能小于4岁和大于10,当前输入11')
+        }
+    })
+    setTimeout(done, 10)
+})
