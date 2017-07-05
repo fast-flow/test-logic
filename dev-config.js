@@ -58,7 +58,7 @@ module.exports = {
                 return process.env.files
             }
             else {
-                return 'test/**/*.test.js'
+                return 'test/**/*.test.js' 
             }
         })()
     ],
