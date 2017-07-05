@@ -39,7 +39,6 @@ module.exports = function (config) {
       singleRun: true
     }
     config.lastPlugins = [
-        'karma-phantomjs-launcher',
         'karma-sauce-launcher'
     ]
     var ciConfig = extend(true, karmaConf(config), sauceLabsConfig)

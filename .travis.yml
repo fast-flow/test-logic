@@ -22,4 +22,4 @@ install:
 - yarn
 
 script:
-- npm run test-ci
+- npm run test:ci
