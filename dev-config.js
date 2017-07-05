@@ -58,7 +58,7 @@ module.exports = {
                 return process.env.files
             }
             else {
-                return 'test/**/*.test.js' 
+                return 'test/**/*.test.js'
             }
         })()
     ],
@@ -110,11 +110,11 @@ module.exports = {
             browserName: 'safari',
             platform: 'Windows 7'
         },
-        // sl_mac_safari: {
-        //     base: 'SauceLabs',
-        //     browserName: 'safari',
-        //     platform: 'OS X 10.10'
-        // },
+        sl_mac_safari: {
+            base: 'SauceLabs',
+            browserName: 'safari',
+            platform: 'OS X 10.10'
+        },
         /*
         // mobile
         sl_ios_safari_8: {
