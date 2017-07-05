@@ -18,7 +18,6 @@ it('every default false', function (done) {
             }
         ],
         finish: function (fail, info) {
-            console.log(info)
             expect(fail).to.eql(true)
             expect(info.source.length).to.eql(2)
             expect(info.source[0].tested).to.eql(true)

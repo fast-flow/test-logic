@@ -54,6 +54,7 @@ module.exports = {
     },
     testFile: [
         'test/**/*.test.js'
+        // 'test/required.test.js'
     ],
     // https://saucelabs.com/platforms
     customLaunchers: {

@@ -1640,7 +1640,7 @@ express@^4.14.0:
     utils-merge "1.0.0"
     vary "~1.1.1"
 
-extend@^3.0.0, extend@~3.0.0, extend@3:
+extend, extend@^3.0.0, extend@~3.0.0, extend@3:
   version "3.0.1"
   resolved "http://registry.npm.taobao.org/extend/download/extend-3.0.1.tgz#a755ea7bc1adfcc5a31ce7e762dbaadc5e636444"
 
