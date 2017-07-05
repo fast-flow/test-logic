@@ -17,6 +17,7 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "extend": "^3.0.1",
+    "mustache": "^2.3.0",
     "react": "0.14.8",
     "react-dom": "0.14.8",
     "util.react": "^1.0.0"
