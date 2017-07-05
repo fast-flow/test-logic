@@ -59,3 +59,22 @@ it('required', function (done) {
     })
     setTimeout(done, 10)
 })
+it('no required ignore check email', function (done) {
+    test.check({
+        value: '',
+        label: '用户名',
+        test: [
+            {
+                rule: 'email'
+            },
+            {
+                rule: 'number'
+            }
+        ],
+        finish: function (fail, info) {
+            expect(fail).to.eql(false)
+            expect(info.source.length).to.eql(2)
+        }
+    })
+    done()
+})
