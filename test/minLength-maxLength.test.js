@@ -18,17 +18,18 @@ it('minLength', function (done) {
         }
     })
     test.check({
-        value: '1234',
+        value: '12345',
         label: '用户名',
         test: [
             {
-                minLength: 4,
-                msg: '{{label}}至少{{self.minLength}}位'
+                maxLength: 4,
+                msg: '{{label}}最多{{self.maxLength}}位'
             }
         ],
         finish: function (fail, info) {
-            expect(fail).to.eql(false)
-            expect(info.source[0].error).to.eql(false)
+            expect(fail).to.eql(true)
+            expect(info.source[0].error).to.eql(true)
+            expect(info.source[0].msg).to.eql('用户名最多4位')
         }
     })
     setTimeout(done, 10)
