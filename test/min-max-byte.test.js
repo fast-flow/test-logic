@@ -65,3 +65,54 @@ it('maxByte', function (done) {
     })
     setTimeout(done, 10)
 })
+
+it('minByte maxByte', function (done) {
+    test.check({
+        value: '二',
+        label: '用户名',
+        test: [
+            {
+                minByte: 3,
+                maxByte: 8,
+                msg: '{{label}}不能大于{{self.maxByte}}字节,不能小于{{self.minByte}}字节'
+            }
+        ],
+        finish: function (fail, info) {
+            expect(fail).to.eql(true)
+            expect(info.source[0].error).to.eql(true)
+            expect(info.source[0].msg).to.eql('用户名不能大于8字节,不能小于3字节')
+        }
+    })
+    test.check({
+        value: '二四六八9',
+        label: '用户名',
+        test: [
+            {
+                minByte: 3,
+                maxByte: 8,
+                msg: '{{label}}不能大于{{self.maxByte}}字节,不能小于{{self.minByte}}字节'
+            }
+        ],
+        finish: function (fail, info) {
+            expect(fail).to.eql(true)
+            expect(info.source[0].error).to.eql(true)
+            expect(info.source[0].msg).to.eql('用户名不能大于8字节,不能小于3字节')
+        }
+    })
+    test.check({
+        value: '二四六八',
+        label: '用户名',
+        test: [
+            {
+                minByte: 3,
+                maxByte: 8,
+                msg: '{{label}}不能大于{{self.maxByte}}字节,不能小于{{self.minByte}}字节'
+            }
+        ],
+        finish: function (fail, info) {
+            expect(fail).to.eql(false)
+            expect(info.source[0].error).to.eql(false)
+        }
+    })
+    setTimeout(done, 10)
+})
