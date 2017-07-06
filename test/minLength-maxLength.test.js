@@ -63,5 +63,21 @@ it('maxLength', function (done) {
             // expect(info.source[0].error).to.eql(false)
         }
     })
+    test.check({
+        value: '1',
+        label: '用户名',
+        test: [
+            {
+                maxLength: 4,
+                minLength: 2,
+                msg: '{{label}}至少{{self.minLength}}位，最多{{self.maxLength}}位，当前{{value}}'
+            }
+        ],
+        finish: function (fail, info) {
+            expect(fail).to.eql(true)
+            expect(info.source[0].error).to.eql(true)
+            expect(info.source[0].msg).to.eql('用户名至少2位，最多4位，当前1')
+        }
+    })
     setTimeout(done, 10)
 })
