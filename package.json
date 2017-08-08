@@ -20,7 +20,7 @@
     "mustache": "^2.3.0",
     "react": "0.14.8",
     "react-dom": "0.14.8",
-    "sparejs": "^0.1.3",
+    "sparejs": "0.4.0",
     "util.react": "^1.0.0"
   },
   "scripts": {
