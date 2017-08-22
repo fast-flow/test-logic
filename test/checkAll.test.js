@@ -1,6 +1,7 @@
 import TextLogic from "../lib/index"
 import expect from "expect.js"
 const test = new TextLogic()
+console.log('checkItem 部分 every true 异步every false')
 it('checkAll 2 fail', function (done) {
     test.checkAll([
         {
