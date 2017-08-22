@@ -35,3 +35,79 @@ it('checkAll', function (done) {
         }
     })
 })
+
+it('checkAll default queue:false', function (done) {
+    test.checkAll([
+        {
+            value: '1',
+            label: 'a',
+            test: [
+                {
+                    func: function (psss, fail) {
+                        setTimeout(function() {
+                            fail(new Date().getTime())
+                        }, 500)
+                    }
+                }
+            ]
+        },
+        {
+            value: '2',
+            label: 'b',
+            test: [
+                {
+                    func: function (psss, fail) {
+                        setTimeout(function() {
+                            fail(new Date().getTime())
+                        }, 500)
+                    }
+                }
+            ]
+        }
+
+    ], {
+        finish: function(fail, errors, source) {
+            expect(fail).to.eql(true)
+            expect(errors[1].msg - errors[0].msg).to.be.within(0, 100)
+            done()
+        }
+    })
+})
+it('checkAll default queue:true', function (done) {
+    test.checkAll([
+        {
+            value: '1',
+            label: 'a',
+            test: [
+                {
+                    func: function (psss, fail) {
+                        setTimeout(function() {
+                            fail(new Date().getTime())
+                        }, 500)
+                    }
+                }
+            ]
+        },
+        {
+            value: '2',
+            label: 'b',
+            test: [
+                {
+                    func: function (psss, fail) {
+                        setTimeout(function() {
+                            fail(new Date().getTime())
+                        }, 500)
+                    }
+                }
+            ]
+        }
+
+    ], {
+        queue: true,
+        finish: function(fail, errors, source) {
+            expect(fail).to.eql(true)
+            expect(errors[1].msg - errors[0].msg).to.be.within(500, 600)
+            done()
+        }
+    })
+})
