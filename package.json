@@ -90,7 +90,7 @@
     "karma-webpack": "^2.0.2",
     "less-loader": "^2.2.3",
     "markrun": "^0.21.0",
-    "markrun-themes": "0.1.2",
+    "markrun-themes": "^0.1.9",
     "open": "^0.0.5",
     "phantomjs-prebuilt": "^2.1.14",
     "react": "0.14.9",

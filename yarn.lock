@@ -2584,9 +2584,9 @@ marked@^0.3.6:
   version "0.3.6"
   resolved "http://registry.npm.taobao.org/marked/download/marked-0.3.6.tgz#b2c6c618fccece4ef86c4fc6cb8a7cbf5aeda8d7"
 
-markrun-themes@0.1.2:
-  version "0.1.2"
-  resolved "http://registry.npm.taobao.org/markrun-themes/download/markrun-themes-0.1.2.tgz#b744e122df4d1b4bb019a32dbc45cd0e782e953e"
+markrun-themes@^0.1.9:
+  version "0.1.9"
+  resolved "http://registry.npm.taobao.org/markrun-themes/download/markrun-themes-0.1.9.tgz#dcec5631dd77f42a5c3cd38c0864995ba31e6fad"
 
 markrun@^0.21.0:
   version "0.21.0"

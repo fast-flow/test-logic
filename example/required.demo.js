@@ -1,9 +1,9 @@
 var TestLogic = require('test-logic').default
 var $ = require('jquery')
-var $input = $('#example__email-input')
-var $msg = $('#example__email-msg')
+var $input = $('#example__required-input')
+var $msg = $('#example__required-msg')
 var test = new TestLogic()
-$input.on('input', function () {
+$input.on('blur', function () {
     /* - - - - - - - - - - - - - - - - - - - */
     var email = this.value
     test.checkAll([
@@ -11,12 +11,12 @@ $input.on('input', function () {
             value: email,
             label: '邮箱',
             test: [
-                'required',
-                'email'
+                'required'
             ]
         }
     ], {
         finish: function(fail, errors, data) {
+            console.log(fail, email)
             if (fail) {
                 $msg.html(errors[0].msg)
             }
@@ -26,4 +26,4 @@ $input.on('input', function () {
         }
     })
     /* - - - - - - - - - - - - - - - - - - - */
-}).trigger('input')
+}).trigger('blur')

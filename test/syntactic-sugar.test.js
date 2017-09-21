@@ -15,6 +15,33 @@ it('syntactic-sugar email', function (done) {
     })
 })
 
+it('syntactic-sugar required', function (done) {
+    test.check({
+        value: '',
+        label: '用户名',
+        test: [
+            'required'
+        ],
+        finish: function (fail, info) {
+            expect(fail).to.eql(true)
+            done()
+        }
+    })
+})
+it('syntactic-sugar required', function (done) {
+    test.check({
+        value: '1',
+        label: '用户名',
+        test: [
+            'required'
+        ],
+        finish: function (fail, info) {
+            expect(fail).to.eql(false)
+            done()
+        }
+    })
+})
+
 it('syntactic-sugar non-existent', function (done) {
     try {
         test.check({
@@ -24,7 +51,7 @@ it('syntactic-sugar non-existent', function (done) {
                 'non-existent'
             ],
             finish: function (fail, info) {
-                
+
             }
         })
     }
