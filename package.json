@@ -15,14 +15,10 @@
     "React custom style"
   ],
   "dependencies": {
-    "classnames": "^2.2.5",
     "delayeach": "0.1.2",
     "extend": "^3.0.1",
     "mustache": "^2.3.0",
-    "react": "0.14.8",
-    "react-dom": "0.14.8",
-    "sparejs": "0.4.0",
-    "util.react": "^1.0.0"
+    "sparejs": "0.4.0"
   },
   "scripts": {
     "doc": "fis3 release -w -d ./output -r ./ -f config/fis-conf.js",
@@ -82,6 +78,7 @@
     "html5shiv": "^3.7.3",
     "is-absolute-url": "^2.1.0",
     "jasmine-core": "^2.5.2",
+    "jquery": "^3.2.1",
     "json-loader": "^0.5.4",
     "json5": "^0.5.1",
     "karma": "1.3.0",
@@ -96,7 +93,9 @@
     "markrun-themes": "0.1.2",
     "open": "^0.0.5",
     "phantomjs-prebuilt": "^2.1.14",
+    "react": "0.14.9",
     "react-addons-test-utils": "0.14.8",
+    "react-dom": "0.14.9",
     "react-hot-loader": "^1.3.1",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",

@@ -1,16 +1,19 @@
 # Basic
 
-## Navigation
+## email
 
-1. [custom-style](./custom-style.md)
-
-## Basic
+````html
+<div id="example__email">
+    <input type="text" value="mail@qq." id="example__email-input" />
+    <div style="color:red;" id="example__email-msg" ></div>
+</div>
+````
 
 ````demo
 {
-    title: 'basic',
-    html: '<div id="example__basic" >loading...</div>',
+    title: 'email',
+    html: '',
     desc: 'describe',
-    file: './basic.demo.js'
+    file: './email.demo.js'
 }
 ````
