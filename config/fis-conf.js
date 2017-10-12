@@ -65,7 +65,7 @@ else {
                 var html = markrun(
                     content,
                     {
-                        template: require('fs').readFileSync(__dirname + '/template.html').toString(),
+                        template: require('fs').readFileSync(__dirname + '/../example/_doc/template.html').toString(),
                         templateDefaultData: {
                             theme: '',
                             keywords: '',

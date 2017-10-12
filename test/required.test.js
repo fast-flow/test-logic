@@ -20,6 +20,23 @@ it('fail', function (done) {
         }
     })
 })
+it('pass', function (done) {
+    test.check({
+        value: 'abc',
+        label: '用户名',
+        test: [
+            {
+                rule: 'required',
+                msg: '{{label}}必填'
+            }
+        ],
+        finish: function (fail, info) {
+            expect(fail).to.eql(false)
+            expect(info.source[0].error).to.eql(false)
+            done()
+        }
+    })
+})
 it('pass ["required", "email"]', function (done) {
     test.check({
         value: 'sadasd',
