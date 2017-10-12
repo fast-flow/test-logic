@@ -24,6 +24,9 @@ window.addEventListener('load', function () {
             ],
             finish: function (fail, info) {
                 console.log('fail', fail)
+                if (fail) {
+                    console.error(info.error[0].msg)
+                }
                 console.log('info', info)
             }
         })
