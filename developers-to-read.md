@@ -1,6 +1,6 @@
 # Developers to read
 
-http://github.com/fast-flow/react
+http://github.com/onface/react
 
 ## Install
 

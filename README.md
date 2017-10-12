@@ -2,7 +2,7 @@
 
 > Form Validation
 
-[![Build Status](https://api.travis-ci.org/fast-flow/test-logic.svg)](https://travis-ci.org/fast-flow/test-logic)
+[![Build Status](https://api.travis-ci.org/onface/test-logic.svg)](https://travis-ci.org/onface/test-logic)
 [![NPM version](https://img.shields.io/npm/v/test-logic.svg?style=flat)](https://npmjs.org/package/test-logic)
 [![NPM downloads](http://img.shields.io/npm/dm/test-logic.svg?style=flat)](https://npmjs.org/package/test-logic)
 
@@ -16,11 +16,11 @@ npm install test-logic --save
 
 ## Example
 
-[![Preview](./example/preview.png)](http://fast-flow.github.io/test-logic/example)
+[![Preview](./example/preview.png)](http://onface.github.io/test-logic/example)
 
 ## Online documentation
 
-[Online](http://fast-flow.github.io/test-logic)
+[Online](http://onface.github.io/test-logic)
 
 ## Change log
 

@@ -3,9 +3,9 @@
   "main": "lib/index.js",
   "version": "0.1.0",
   "description": "Form Validation",
-  "repository": "fast-flow/test-logic",
-  "homepage": "http://fast-flow.github.io/test-logic",
-  "gitUsername": "fast-flow",
+  "repository": "onface/test-logic",
+  "homepage": "http://onface.github.io/test-logic",
+  "gitUsername": "onface",
   "gitRepository": "test-logic",
   "keywords": [
     "react",

@@ -3,7 +3,7 @@ var express = require('express')
 var open = require("open")
 var iPackage = require('../package.json')
 var hashToPort = require('hash-to-port')
-var serverPort = hashToPort(iPackage.name + 'fast-flow/react:static-server')
+var serverPort = hashToPort(iPackage.name + 'onface/react:static-server')
 var userConfig = require('../dev-config.js')
 var app = express();
 require('./express-parser')(app)
