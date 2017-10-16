@@ -17,7 +17,7 @@ window.addEventListener('load', function () {
         test.check({
             value: eInput.value,
             label: '用户名',
-            test: ['required'],
+/**/        test: ['required'],
             finish: function (fail, info) {
                 console.log('fail', fail)
                 if (fail) {
@@ -45,7 +45,7 @@ window.addEventListener('load', function () {
         test.check({
             value: eInput.value,
             label: '邮箱',
-            test: ['required', 'email'],
+/**/        test: ['required', 'email'],
             finish: function (fail, info) {
                 console.log('fail', fail)
                 if (fail) {
@@ -74,19 +74,19 @@ window.addEventListener('load', function () {
         test.check({
             value: eInput.value,
             label: '用户名',
-            test: [
-                'required',
-                {
-                    func: function (pass, fail, value) {
-                        console.log(this)
-                        // 可以通过延迟执行 pass 或 fail 达到异步校验的目的
-                        if (/abc/.test(value)) {
-                            fail('{{label}}中不能包含 abc')
-                        }
-                        pass()
-                    }
-                }
-            ],
+/**/        test: [
+/**/            'required',
+/**/            {
+/**/                func: function (pass, fail, value) {
+/**/                    console.log(this)
+/**/                    // 可以通过延迟执行 pass 或 fail 达到异步校验的目的
+/**/                    if (/abc/.test(value)) {
+/**/                        fail('{{label}}中不能包含 abc')
+/**/                    }
+/**/                    pass()
+/**/                }
+/**/            }
+/**/        ],
             finish: function (fail, info) {
                 console.log('fail', fail)
                 if (fail) {
@@ -115,13 +115,13 @@ window.addEventListener('load', function () {
         test.check({
             value: eInput.value,
             label: '年龄',
-            test: [
-                'required',
-                {
-                    max: 10,
-                    msg: '{{label}}不可大于{{self.max}}'
-                }
-            ],
+/**/        test: [
+/**/            'required',
+/**/            {
+/**/                max: 10,
+/**/                msg: '{{label}}不可大于{{self.max}}'
+/**/            }
+/**/        ],
             finish: function (fail, info) {
                 console.log('fail', fail)
                 if (fail) {
@@ -150,13 +150,13 @@ window.addEventListener('load', function () {
         test.check({
             value: eInput.value,
             label: '年龄',
-            test: [
-                'required',
-                {
-                    min: 4,
-                    msg: '{{label}}不可小于{{self.min}}'
-                }
-            ],
+ /**/       test: [
+ /**/           'required',
+ /**/           {
+ /**/               min: 4,
+ /**/               msg: '{{label}}不可小于{{self.min}}'
+ /**/           }
+ /**/       ],
             finish: function (fail, info) {
                 console.log('fail', fail)
                 if (fail) {
@@ -185,14 +185,14 @@ window.addEventListener('load', function () {
         test.check({
             value: eInput.value,
             label: '年龄',
-            test: [
-                'required',
-                {
-                    max: 6,
-                    min: 4,
-                    msg: '{{label}}不可小于{{self.min}}并大于{{self.max}}'
-                }
-            ],
+/**/        test: [
+/**/            'required',
+/**/            {
+/**/                max: 6,
+/**/                min: 4,
+/**/                msg: '{{label}}不可小于{{self.min}}并大于{{self.max}}'
+/**/            }
+/**/        ],
             finish: function (fail, info) {
                 console.log('fail', fail)
                 if (fail) {
