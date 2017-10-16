@@ -20,9 +20,7 @@ window.addEventListener('load', function () {
 /**/        test: ['required'],
             finish: function (fail, info) {
                 console.log('fail', fail)
-                if (fail) {
-                    console.error(info.error[0].msg)
-                }
+                if (fail) { console.error(info.error[0].msg) }
                 console.log('info', info)
             }
         })
@@ -48,9 +46,7 @@ window.addEventListener('load', function () {
 /**/        test: ['required', 'email'],
             finish: function (fail, info) {
                 console.log('fail', fail)
-                if (fail) {
-                    console.error(info.error[0].msg)
-                }
+                if (fail) { console.error(info.error[0].msg) }
                 console.log('info', info)
             }
         })
@@ -89,9 +85,7 @@ window.addEventListener('load', function () {
 /**/        ],
             finish: function (fail, info) {
                 console.log('fail', fail)
-                if (fail) {
-                    console.error(info.error[0].msg)
-                }
+                if (fail) { console.error(info.error[0].msg) }
                 console.log('info', info)
             }
         })
@@ -124,9 +118,7 @@ window.addEventListener('load', function () {
 /**/        ],
             finish: function (fail, info) {
                 console.log('fail', fail)
-                if (fail) {
-                    console.error(info.error[0].msg)
-                }
+                if (fail) { console.error(info.error[0].msg) }
                 console.log('info', info)
             }
         })
@@ -159,9 +151,7 @@ window.addEventListener('load', function () {
  /**/       ],
             finish: function (fail, info) {
                 console.log('fail', fail)
-                if (fail) {
-                    console.error(info.error[0].msg)
-                }
+                if (fail) { console.error(info.error[0].msg) }
                 console.log('info', info)
             }
         })
@@ -169,7 +159,7 @@ window.addEventListener('load', function () {
 })
 ````
 
-## max-min
+## max&min
 
 ````html
 <input type="number" id="maxMinInput" value="3" />
@@ -195,12 +185,112 @@ window.addEventListener('load', function () {
 /**/        ],
             finish: function (fail, info) {
                 console.log('fail', fail)
-                if (fail) {
-                    console.error(info.error[0].msg)
-                }
+                if (fail) { console.error(info.error[0].msg) }
                 console.log('info', info)
             }
         })
     })
 })
 ````
+
+## maxLength
+
+````html
+<input type="text" id="maxLengthInput" value="a23456789" />
+<button id="maxLengthBtn" >Check the console</button>
+````
+
+````js
+window.addEventListener('load', function () {
+    var eInput = document.getElementById('maxLengthInput')
+    var eBtn = document.getElementById('maxLengthBtn')
+    var test = new TestLogic({})
+    eBtn.addEventListener('click', function () {
+        test.check({
+            value: eInput.value,
+            label: '用户名',
+/**/        test: [
+/**/            'required',
+/**/            {
+/**/                maxLength: 8,
+/**/                msg: '{{label}}长度不可大于{{self.maxLength}},当前长度{{value.length}}'
+/**/            }
+/**/        ],
+            finish: function (fail, info) {
+                console.log('fail', fail)
+                if (fail) { console.error(info.error[0].msg) }
+                console.log('info', info)
+            }
+        })
+    })
+})
+````
+
+## minLength
+
+````html
+<input type="text" id="minLengthInput" value="a" />
+<button id="minLengthBtn" >Check the console</button>
+````
+
+````js
+window.addEventListener('load', function () {
+    var eInput = document.getElementById('minLengthInput')
+    var eBtn = document.getElementById('minLengthBtn')
+    var test = new TestLogic({})
+    eBtn.addEventListener('click', function () {
+        test.check({
+            value: eInput.value,
+            label: '用户名',
+/**/        test: [
+/**/            'required',
+/**/            {
+/**/                minLength: 2,
+/**/                msg: '{{label}}长度不可小于{{self.minLength}},当前长度{{value.length}}'
+/**/            }
+/**/        ],
+            finish: function (fail, info) {
+                console.log('fail', fail)
+                if (fail) { console.error(info.error[0].msg) }
+                console.log('info', info)
+            }
+        })
+    })
+})
+````
+
+
+## maxLength&minLength
+
+````html
+<input type="text" id="maxMinLengthInput" value="a23456" />
+<button id="maxMinLengthBtn" >Check the console</button>
+````
+
+````js
+window.addEventListener('load', function () {
+    var eInput = document.getElementById('maxMinLengthInput')
+    var eBtn = document.getElementById('maxMinLengthBtn')
+    var test = new TestLogic({})
+    eBtn.addEventListener('click', function () {
+        test.check({
+            value: eInput.value,
+            label: '用户名',
+/**/        test: [
+/**/            'required',
+/**/            {
+/**/                minLength: 2,
+/**/                maxLength: 5,
+/**/                msg: '{{label}}长度不可小于{{self.minLength}}且大于{{self.maxLength}},当前长度{{value.length}}'
+/**/            }
+/**/        ],
+            finish: function (fail, info) {
+                console.log('fail', fail)
+                if (fail) { console.error(info.error[0].msg) }
+                console.log('info', info)
+            }
+        })
+    })
+})
+````
+
