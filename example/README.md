@@ -431,3 +431,74 @@ window.addEventListener('load', function () {
     })
 })
 ````
+
+## regexp
+
+
+````html
+<input type="text" id="regexpInput" value="123abc" />
+<button id="regexpBtn" >Check the console</button>
+````
+
+````js
+window.addEventListener('load', function () {
+    var eInput = document.getElementById('regexpInput')
+    var eBtn = document.getElementById('regexpBtn')
+    var test = new TestLogic({})
+    eBtn.addEventListener('click', function () {
+        test.check({
+            value: eInput.value,
+            label: '用户名',
+/**/        test: [
+/**/            'required',
+/**/            {
+/**/                regexp: /abc/,
+/**/                be: false,
+/**/                msg: '{{label}}不能包含 abc'
+/**/                // regexp.test(value) should be false
+/**/            }
+/**/        ],
+            finish: function (fail, info) {
+                console.log('fail', fail)
+                if (fail) { console.error(info.error[0].msg) }
+                console.log('info', info)
+            }
+        })
+    })
+})
+````
+
+## regexp-be-true
+
+````html
+<input type="text" id="regexpTrueInput" value="123ab" />
+<button id="regexpTrueBtn" >Check the console</button>
+````
+
+````js
+window.addEventListener('load', function () {
+    var eInput = document.getElementById('regexpTrueInput')
+    var eBtn = document.getElementById('regexpTrueBtn')
+    var test = new TestLogic({})
+    eBtn.addEventListener('click', function () {
+        test.check({
+            value: eInput.value,
+            label: '用户名',
+/**/        test: [
+/**/            'required',
+/**/            {
+/**/                regexp: /abc/,
+/**/                be: true,
+/**/                msg: '{{label}}必须包含 abc'
+/**/                // regexp.test(value) should be true
+/**/            }
+/**/        ],
+            finish: function (fail, info) {
+                console.log('fail', fail)
+                if (fail) { console.error(info.error[0].msg) }
+                console.log('info', info)
+            }
+        })
+    })
+})
+````
