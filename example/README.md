@@ -93,6 +93,39 @@ window.addEventListener('load', function () {
 })
 ````
 
+## msg
+
+
+````html
+<button id="msgBtn" >Check the console</button>
+````
+
+````js
+window.addEventListener('load', function () {
+    var eBtn = document.getElementById('msgBtn')
+    var test = new TestLogic({})
+    eBtn.addEventListener('click', function () {
+        test.check({
+            value: 'a',
+            label: '邮箱',
+/**/        test: [
+/**/            'required',
+/**/            {
+/**/                rule: 'email',
+/**/                msg: '{{label}}格式错误'
+/**/                // 语法基于 https://github.com/janl/mustache.js
+/**/            }
+/**/        ],
+            finish: function (fail, info) {
+                console.log('fail', fail)
+                if (fail) { console.error(info.error[0].msg) }
+                console.log('info', info)
+            }
+        })
+    })
+})
+````
+
 ## max
 
 ````html
