@@ -327,3 +327,107 @@ window.addEventListener('load', function () {
 })
 ````
 
+
+## maxByte
+
+````html
+<input type="text" id="maxByteInput" value="123五" />
+<button id="maxByteBtn" >Check the console</button>
+````
+
+````js
+window.addEventListener('load', function () {
+    var eInput = document.getElementById('maxByteInput')
+    var eBtn = document.getElementById('maxByteBtn')
+    var test = new TestLogic({})
+    eBtn.addEventListener('click', function () {
+        test.check({
+            value: eInput.value,
+            label: '用户名',
+/**/        test: [
+/**/            'required',
+/**/            {
+/**/                maxByte: 4,
+/**/                msg: '{{label}}长度不能大于{{self.maxByte}}个英文或{{self.maxByteHalf}}个中文,当前字节{{valueByte}}'
+/**/            }
+/**/        ],
+            finish: function (fail, info) {
+                console.log('fail', fail)
+                if (fail) { console.error(info.error[0].msg) }
+                console.log('info', info)
+            }
+        })
+    })
+})
+````
+
+## minByte
+
+````html
+<input type="text" id="minByteInput" value="二四六" />
+<button id="minByteBtn" >Check the console</button>
+````
+
+````js
+window.addEventListener('load', function () {
+    var eInput = document.getElementById('minByteInput')
+    var eBtn = document.getElementById('minByteBtn')
+    var test = new TestLogic({})
+    eBtn.addEventListener('click', function () {
+        test.check({
+            value: eInput.value,
+            label: '用户名',
+/**/        test: [
+/**/            'required',
+/**/            {
+/**/                minByte: 5,
+/**/                msg: '{{label}}长度不能小于{{self.minByte}}个英文或{{self.minByteHalf}}个中文,当前字节{{valueByte}}'
+/**/            }
+/**/        ],
+            finish: function (fail, info) {
+                console.log('fail', fail)
+                if (fail) { console.error(info.error[0].msg) }
+                console.log('info', info)
+            }
+        })
+    })
+})
+````
+
+## maxByte&minByte
+
+
+````html
+<input type="text" id="maxMinByteInput" value="二四六八十" />
+<button id="maxMinByteBtn" >Check the console</button>
+````
+
+````js
+window.addEventListener('load', function () {
+    var eInput = document.getElementById('maxMinByteInput')
+    var eBtn = document.getElementById('maxMinByteBtn')
+    var test = new TestLogic({})
+    eBtn.addEventListener('click', function () {
+        test.check({
+            value: eInput.value,
+            label: '用户名',
+/**/        test: [
+/**/            'required',
+/**/            {
+/**/                maxByte: 9,
+/**/                minByte: 5,
+/**/                msg: '{{label}}长度不能大于{{self.maxByte}}个英文或{{self.maxByteHalf}}个中文'+
+/**/                     '且' + 
+/**/                     '不能小于{{self.minByte}}个英文或{{self.minByteHalf}}个中文，' + 
+/**/                     '当前字节{{valueByte}}'
+/**/            }
+/**/        ],
+            finish: function (fail, info) {
+                console.log('fail', fail)
+                if (fail) { console.error(info.error[0].msg) }
+                console.log('info', info)
+            }
+        })
+    })
+})
+````
