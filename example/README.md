@@ -1,5 +1,6 @@
 # Basic
 
+
 ## required
 
 ````html
@@ -84,6 +85,112 @@ window.addEventListener('load', function () {
                         }
                         pass()
                     }
+                }
+            ],
+            finish: function (fail, info) {
+                console.log('fail', fail)
+                if (fail) {
+                    console.error(info.error[0].msg)
+                }
+                console.log('info', info)
+            }
+        })
+    })
+})
+````
+
+## max
+
+````html
+<input type="number" id="maxInput" value="9" />
+<button id="maxBtn" >Check the console</button>
+````
+
+````js
+window.addEventListener('load', function () {
+    var eInput = document.getElementById('maxInput')
+    var eBtn = document.getElementById('maxBtn')
+    var test = new TestLogic({})
+    eBtn.addEventListener('click', function () {
+        test.check({
+            value: eInput.value,
+            label: '年龄',
+            test: [
+                'required',
+                {
+                    max: 10,
+                    msg: '{{label}}不可大于{{self.max}}'
+                }
+            ],
+            finish: function (fail, info) {
+                console.log('fail', fail)
+                if (fail) {
+                    console.error(info.error[0].msg)
+                }
+                console.log('info', info)
+            }
+        })
+    })
+})
+````
+
+## min
+
+````html
+<input type="number" id="minInput" value="3" />
+<button id="minBtn" >Check the console</button>
+````
+
+````js
+window.addEventListener('load', function () {
+    var eInput = document.getElementById('minInput')
+    var eBtn = document.getElementById('minBtn')
+    var test = new TestLogic({})
+    eBtn.addEventListener('click', function () {
+        test.check({
+            value: eInput.value,
+            label: '年龄',
+            test: [
+                'required',
+                {
+                    min: 4,
+                    msg: '{{label}}不可小于{{self.min}}'
+                }
+            ],
+            finish: function (fail, info) {
+                console.log('fail', fail)
+                if (fail) {
+                    console.error(info.error[0].msg)
+                }
+                console.log('info', info)
+            }
+        })
+    })
+})
+````
+
+## max-min
+
+````html
+<input type="number" id="maxMinInput" value="3" />
+<button id="maxMinBtn" >Check the console</button>
+````
+
+````js
+window.addEventListener('load', function () {
+    var eInput = document.getElementById('maxMinInput')
+    var eBtn = document.getElementById('maxMinBtn')
+    var test = new TestLogic({})
+    eBtn.addEventListener('click', function () {
+        test.check({
+            value: eInput.value,
+            label: '年龄',
+            test: [
+                'required',
+                {
+                    max: 6,
+                    min: 4,
+                    msg: '{{label}}不可小于{{self.min}}并大于{{self.max}}'
                 }
             ],
             finish: function (fail, info) {
