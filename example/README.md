@@ -93,8 +93,6 @@ window.addEventListener('load', function () {
 ````
 
 ### msg
-
-
 ````html
 <button id="msgBtn" >Check the console</button>
 ````
@@ -629,6 +627,8 @@ window.addEventListener('load', function () {
     })
 })
 ````
+
+## addRule
 
 ## checkAll
 
