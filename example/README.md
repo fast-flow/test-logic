@@ -537,3 +537,38 @@ window.addEventListener('load', function () {
     })
 })
 ````
+
+## notEqual
+
+````html
+<input type="text" id="notEqualInput1" value="123ab" />
+<input type="text" id="notEqualInput2" value="123ab" />
+<button id="notEqualBtn" >Check the console</button>
+````
+
+````js
+window.addEventListener('load', function () {
+    var eInput1 = document.getElementById('notEqualInput1')
+    var eInput2 = document.getElementById('notEqualInput2')
+    var eBtn = document.getElementById('notEqualBtn')
+    var test = new TestLogic({})
+    eBtn.addEventListener('click', function () {
+        test.check({
+            value: eInput2.value,
+            label: '新密码',
+/**/        test: [
+/**/            'required',
+/**/            {
+/**/                notEqual: eInput1.value,
+/**/                msg: '新密码与旧密码不能相同'
+/**/            }
+/**/        ],
+            finish: function (fail, info) {
+                console.log('fail', fail)
+                if (fail) { console.error(info.error[0].msg) }
+                console.log('info', info)
+            }
+        })
+    })
+})
+````
