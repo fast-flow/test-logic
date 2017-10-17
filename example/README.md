@@ -590,38 +590,39 @@ window.addEventListener('load', function () {
             value: eInput.value,
             label: '密码',
 /**/        every: true,
-            test: [
-                {
-                    rule: 'required',
-                    // 使用 $info 防止与 test-logic 未来的新接口冲突
-                    $info: '密码必填'
-                },
-                {
-                    regexp: /(123|1234|12345|123456)/,
-                    be: false,
-                    $info: '使用连续数字作为密码不安全(123456)'
-                },
-                {
-                    regexp: /[A-Z]/,
-                    be: true,
-                    $info: '必须存在大写英文字母'
-                },
-                {
-                    regexp: /[a-z]/,
-                    be: true,
-                    $info: '必须存在小写英文字母'
-                },
-                {
-                    regexp: /[0-9]/,
-                    be: true,
-                    $info: '必须存在数字'
-                }
+/**/        test: [
+/**/            {
+/**/                rule: 'required',
+/**/                // 使用 $info 防止与 test-logic 未来的新接口冲突
+/**/                $info: '密码必填'
+/**/            },
+/**/            {
+/**/                regexp: /(123|1234|12345|123456)/,
+/**/                be: false,
+/**/                $info: '使用连续数字作为密码不安全(123456)'
+/**/            },
+/**/            {
+/**/                regexp: /[A-Z]/,
+/**/                be: true,
+/**/                $info: '必须存在大写英文字母'
+/**/            },
+/**/            {
+/**/                regexp: /[a-z]/,
+/**/                be: true,
+/**/                $info: '必须存在小写英文字母'
+/**/            },
+/**/            {
+/**/                regexp: /[0-9]/,
+/**/                be: true,
+/**/                $info: '必须存在数字'
+/**/            }
 /**/        ],
             finish: function (fail, info) {
                 var result = info.source.map(function (item) {
                         var color = item.error?'red':'gray'
                         return '<div style="color:' + color + ';" >' + item.test.$info + '</div>'
                     })
+                result.push('<div>fail:' + fail +  '</div>')
                 eResult.innerHTML = result.join('')
                 console.log('info', info)
             }
