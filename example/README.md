@@ -73,15 +73,13 @@ window.addEventListener('load', function () {
             label: '用户名',
 /**/        test: [
 /**/            'required',
-/**/            {
-/**/                func: function (pass, fail, value) {
-/**/                    console.log(this)
-/**/                    // 可以通过延迟执行 pass 或 fail 达到异步校验的目的
-/**/                    if (/abc/.test(value)) {
-/**/                        fail('{{label}}中不能包含 abc')
-/**/                    }
-/**/                    pass()
+/**/            function (pass, fail, value) {
+/**/                console.log(this)
+/**/                // 可以通过延迟执行 pass 或 fail 达到异步校验的目的
+/**/                if (/abc/.test(value)) {
+/**/                    fail('{{label}}中不能包含 abc')
 /**/                }
+/**/                pass()
 /**/            }
 /**/        ],
             finish: function (fail, info) {
@@ -636,10 +634,11 @@ window.addEventListener('load', function () {
 
 ````html
 <form id="checkAllForm">
-    user: <input type="text" class="js-user"><br />
-    email: <input type="text" class="js-email"><br />
-    mobile: <input type="text" class="js-mobile"><br />
-    <button type="submit" >submit</button>
+    user: <input type="text" class="js-user" /><br />
+    email: <input type="text" class="js-email" /><br />
+    mobile: <input type="text" class="js-mobile" /><br />
+    async: <input type="text" class="js-async" value="a" /><br />
+    <button type="submit" >Check the console</button>
 </form>
 ````
 ````js
@@ -664,6 +663,25 @@ window.addEventListener('load', function () {
                 label: '手机号码',
                 value: get('js-mobile').value,
                 test: ['required', 'mobile']
+            },
+            {
+                label: '(异步校验)',
+                value: get('js-async').value,
+                test: [
+                    'required',
+                    function (pass, fail, value) {
+                        console.log('async start...')
+                        setTimeout(function () {
+                            if (/a/.test(value)) {
+                                fail('{{label}}不能包含a')
+                            }
+                            else {
+                                pass()
+                            }
+                            console.log('async end')
+                        }, 500)
+                    }
+                ]
             }
         ], {
             finish: function (fail, errors, data) {

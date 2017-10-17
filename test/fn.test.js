@@ -29,11 +29,9 @@ it('function pass', function (done) {
         value: 'abc',
         label: '年龄',
         test: [
-            {
-                func: function (pass, fail, value) {
-                    expect(value).to.eql('abc')
-                    pass()
-                }
+            function (pass, fail, value) {
+                expect(value).to.eql('abc')
+                pass()
             }
         ],
         finish: function (fail, info) {
