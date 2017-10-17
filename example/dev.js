@@ -10,7 +10,7 @@ window.console.log = function() {
     if (arguments[0] === 'fail' && arguments[1] === false) {
         document.title = 'PASS-' + parseInt(Math.random()*99)
     }
-    window._log(arguments)
+    window._log.apply(null,arguments)
 }
 
 window.console.error = function() {
@@ -19,5 +19,5 @@ window.console.error = function() {
             return typeof item === 'string'
         })
     )
-    window._error(arguments)
+    window._error.apply(null,arguments)
 }

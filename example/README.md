@@ -1,7 +1,8 @@
 # Basic
 
+## check
 
-## required
+### required
 
 ````html
 <input type="text" id="requiredInput" value="" />
@@ -27,7 +28,7 @@ window.addEventListener('load', function () {
     })
 })
 ````
-## required-email
+### required-email
 
 ````html
 <input type="text" id="requiredEmailInput" value="" />
@@ -54,7 +55,7 @@ window.addEventListener('load', function () {
 })
 ````
 
-## function-async
+### function-async
 
 ````html
 <input type="text" id="functionInput" placeholder="input abc" value="" />
@@ -93,7 +94,7 @@ window.addEventListener('load', function () {
 })
 ````
 
-## msg
+### msg
 
 
 ````html
@@ -126,7 +127,7 @@ window.addEventListener('load', function () {
 })
 ````
 
-## max
+### max
 
 ````html
 <input type="number" id="maxInput" value="9" />
@@ -159,7 +160,7 @@ window.addEventListener('load', function () {
 })
 ````
 
-## min
+### min
 
 ````html
 <input type="number" id="minInput" value="3" />
@@ -192,7 +193,7 @@ window.addEventListener('load', function () {
 })
 ````
 
-## max&min
+### max&min
 
 ````html
 <input type="number" id="maxMinInput" value="3" />
@@ -226,7 +227,7 @@ window.addEventListener('load', function () {
 })
 ````
 
-## maxLength
+### maxLength
 
 ````html
 <input type="text" id="maxLengthInput" value="a23456789" />
@@ -259,7 +260,7 @@ window.addEventListener('load', function () {
 })
 ````
 
-## minLength
+### minLength
 
 ````html
 <input type="text" id="minLengthInput" value="a" />
@@ -293,7 +294,7 @@ window.addEventListener('load', function () {
 ````
 
 
-## maxLength&minLength
+### maxLength&minLength
 
 ````html
 <input type="text" id="maxMinLengthInput" value="a23456" />
@@ -328,7 +329,7 @@ window.addEventListener('load', function () {
 ````
 
 
-## maxByte
+### maxByte
 
 ````html
 <input type="text" id="maxByteInput" value="123五" />
@@ -361,7 +362,7 @@ window.addEventListener('load', function () {
 })
 ````
 
-## minByte
+### minByte
 
 ````html
 <input type="text" id="minByteInput" value="二四六" />
@@ -394,7 +395,7 @@ window.addEventListener('load', function () {
 })
 ````
 
-## maxByte&minByte
+### maxByte&minByte
 
 
 ````html
@@ -432,7 +433,7 @@ window.addEventListener('load', function () {
 })
 ````
 
-## regexp
+### regexp
 
 
 ````html
@@ -468,7 +469,7 @@ window.addEventListener('load', function () {
 })
 ````
 
-## regexp-be-true
+### regexp-be-true
 
 ````html
 <input type="text" id="regexpTrueInput" value="123ab" />
@@ -503,7 +504,7 @@ window.addEventListener('load', function () {
 })
 ````
 
-## equal
+### equal
 
 ````html
 <input type="text" id="equalInput1" value="123ab" />
@@ -538,7 +539,7 @@ window.addEventListener('load', function () {
 })
 ````
 
-## notEqual
+### notEqual
 
 ````html
 <input type="text" id="notEqualInput1" value="123ab" />
@@ -573,7 +574,7 @@ window.addEventListener('load', function () {
 })
 ````
 
-## every
+### every
 
 ````html
 <input type="text" id="everyInput" value="123" /> change this input value
@@ -625,6 +626,51 @@ window.addEventListener('load', function () {
                 result.push('<div>fail:' + fail +  '</div>')
                 eResult.innerHTML = result.join('')
                 console.log('info', info)
+            }
+        })
+    })
+})
+````
+
+## checkAll
+
+````html
+<form id="checkAllForm">
+    user: <input type="text" class="js-user"><br />
+    email: <input type="text" class="js-email"><br />
+    mobile: <input type="text" class="js-mobile"><br />
+    <button type="submit" >submit</button>
+</form>
+````
+````js
+window.addEventListener('load', function () {
+    var test = new TestLogic({})
+    var eForm = document.getElementById('checkAllForm')
+    var get = function (className) {return eForm.getElementsByClassName(className)[0]}
+    eForm.addEventListener('submit', function (e) {
+        e.preventDefault()
+        test.checkAll([
+            {
+                label: '用户名',
+                value: get('js-user').value,
+                test: ['required']
+            },
+            {
+                label: '邮箱',
+                value: get('js-email').value,
+                test: ['required', 'email']
+            },
+            {
+                label: '手机号码',
+                value: get('js-mobile').value,
+                test: ['required', 'mobile']
+            }
+        ], {
+            finish: function (fail, errors, data) {
+                console.log('## checkAll')
+                console.log('fail', fail),
+                console.error('errors', errors)
+                console.log('data', data)
             }
         })
     })
