@@ -417,8 +417,8 @@ window.addEventListener('load', function () {
 /**/                maxByte: 9,
 /**/                minByte: 5,
 /**/                msg: '{{label}}长度不能大于{{self.maxByte}}个英文或{{self.maxByteHalf}}个中文'+
-/**/                     '且' + 
-/**/                     '不能小于{{self.minByte}}个英文或{{self.minByteHalf}}个中文，' + 
+/**/                     '且' +
+/**/                     '不能小于{{self.minByte}}个英文或{{self.minByteHalf}}个中文，' +
 /**/                     '当前字节{{valueByte}}'
 /**/            }
 /**/        ],
@@ -491,6 +491,41 @@ window.addEventListener('load', function () {
 /**/                be: true,
 /**/                msg: '{{label}}必须包含 abc'
 /**/                // regexp.test(value) should be true
+/**/            }
+/**/        ],
+            finish: function (fail, info) {
+                console.log('fail', fail)
+                if (fail) { console.error(info.error[0].msg) }
+                console.log('info', info)
+            }
+        })
+    })
+})
+````
+
+## equal
+
+````html
+<input type="text" id="equalInput1" value="123ab" />
+<input type="text" id="equalInput2" value="123abc" />
+<button id="equalBtn" >Check the console</button>
+````
+
+````js
+window.addEventListener('load', function () {
+    var eInput1 = document.getElementById('equalInput1')
+    var eInput2 = document.getElementById('equalInput2')
+    var eBtn = document.getElementById('equalBtn')
+    var test = new TestLogic({})
+    eBtn.addEventListener('click', function () {
+        test.check({
+            value: eInput2.value,
+            label: '密码',
+/**/        test: [
+/**/            'required',
+/**/            {
+/**/                equal: eInput1.value,
+/**/                msg: '两次密码输入不相同'
 /**/            }
 /**/        ],
             finish: function (fail, info) {
