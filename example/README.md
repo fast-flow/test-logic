@@ -632,6 +632,8 @@ window.addEventListener('load', function () {
 
 ## checkAll
 
+### basic
+
 ````html
 <form id="checkAllForm">
     user: <input type="text" class="js-user" /><br />
@@ -640,11 +642,84 @@ window.addEventListener('load', function () {
     async: <input type="text" class="js-async" value="a" /><br />
     <button type="submit" >Check the console</button>
 </form>
+<pre id="checkAllResult"></pre>
 ````
 ````js
 window.addEventListener('load', function () {
     var test = new TestLogic({})
     var eForm = document.getElementById('checkAllForm')
+    var eResult = document.getElementById('checkAllResult')
+    var get = function (className) {return eForm.getElementsByClassName(className)[0]}
+    eForm.addEventListener('submit', function (e) {
+        e.preventDefault()
+/**/    test.checkAll([
+/**/        {
+/**/            label: '用户名',
+/**/            value: get('js-user').value,
+/**/            test: ['required']
+/**/        },
+/**/        {
+/**/            label: '邮箱',
+/**/            value: get('js-email').value,
+/**/            test: ['required', 'email']
+/**/        },
+/**/        {
+/**/            label: '手机号码',
+/**/            value: get('js-mobile').value,
+/**/            test: ['required', 'mobile']
+/**/        },
+/**/        {
+/**/            label: '(异步校验)',
+/**/            value: get('js-async').value,
+/**/            test: [
+/**/                'required',
+/**/                function (pass, fail, value) {
+/**/                    console.log('async start...')
+/**/                    setTimeout(function () {
+/**/                        if (/a/.test(value)) {
+/**/                            fail('{{label}}不能包含a')
+/**/                        }
+/**/                        else {
+/**/                            pass()
+/**/                        }
+/**/                        console.log('async end')
+/**/                    }, 500)
+/**/                }
+/**/            ]
+/**/        }
+/**/    ], {
+/**/        finish: function (fail, errors, data) {
+/**/            console.log('## checkAll')
+/**/            console.log('fail', fail),
+/**/            console.error('errors', errors)
+/**/            console.log('data', data)
+/**/            eResult.innerHTML = errors.map(function (item) {
+/**/                return item.msg
+/**/            }).join('\r\n')
+/**/        }
+/**/    })
+/**/})
+})
+````
+
+### every:false
+
+
+````html
+<form id="everyForm">
+    user: <input type="text" class="js-user" /><br />
+    email: <input type="text" class="js-email" /><br />
+    mobile: <input type="text" class="js-mobile" /><br />
+    async: <input type="text" class="js-async" value="a" /><br />
+    <button type="submit" >Check the console</button>
+</form>
+<pre id="everyFormResult"></pre>
+````
+````js
+window.addEventListener('load', function () {
+    var test = new TestLogic({})
+    var eForm = document.getElementById('everyForm')
+    var eResult = document.getElementById('everyFormResult')
     var get = function (className) {return eForm.getElementsByClassName(className)[0]}
     eForm.addEventListener('submit', function (e) {
         e.preventDefault()
@@ -684,11 +759,16 @@ window.addEventListener('load', function () {
                 ]
             }
         ], {
+            every: false,
             finish: function (fail, errors, data) {
+                console.log('------------------------------')
                 console.log('## checkAll')
                 console.log('fail', fail),
                 console.error('errors', errors)
                 console.log('data', data)
+                eResult.innerHTML = errors.map(function (item) {
+                    return item.msg
+                }).join('\r\n')
             }
         })
     })

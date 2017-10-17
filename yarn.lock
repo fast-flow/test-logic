@@ -1361,9 +1361,9 @@ del@^2.2.2:
     pinkie-promise "^2.0.0"
     rimraf "^2.2.8"
 
-delayeach@0.1.2:
-  version "0.1.2"
-  resolved "http://registry.npm.taobao.org/delayeach/download/delayeach-0.1.2.tgz#68b50e3afa4be529548077a9bf19c7a53fed4251"
+delayeach@0.2.0:
+  version "0.2.0"
+  resolved "http://registry.npm.taobao.org/delayeach/download/delayeach-0.2.0.tgz#63c2d663bab4d79196995a461a73b02f45e37b85"
 
 delayed-stream@~1.0.0:
   version "1.0.0"
