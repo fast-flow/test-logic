@@ -2,6 +2,8 @@ import TextLogic from "../lib/index"
 import expect from "expect.js"
 const test = new TextLogic()
 it('checkAll 2 fail', function (done) {
+    let callItemFinishCount = 0
+    let callItemFinishTime = new Date().getTime()
     test.checkAll([
         {
             value: '1abcd',
@@ -12,7 +14,10 @@ it('checkAll 2 fail', function (done) {
                     be: false,
                     msg: '{{label}}不能包含数字'
                 }
-            ]
+            ],
+            finish: function () {
+                callItemFinishCount++
+            }
         },
         {
             value: '二3',
@@ -32,6 +37,7 @@ it('checkAll 2 fail', function (done) {
             expect(errors[1].msg).to.eql('用户名不能少4个英文|2个中文,当前字节3')
             expect(errors.length).to.eql(2)
             expect(data.length).to.eql(2)
+            expect(callItemFinishCount).to.eql(1)
             done()
         }
     })

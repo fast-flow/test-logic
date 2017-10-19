@@ -704,6 +704,7 @@ window.addEventListener('load', function () {
 
 ### every:false
 
+`checkAll([...], {every: true})` default `true`
 
 ````html
 <form id="everyForm">
@@ -765,6 +766,85 @@ window.addEventListener('load', function () {
                 console.log('fail', fail),
                 console.error('errors', errors)
                 console.log('data', data)
+                eResult.innerHTML = errors.map(function (item) {
+                    return item.msg
+                }).join('\r\n')
+            }
+        })
+    })
+})
+````
+
+### queue
+
+`checkAll([...], {queue: false})` default `false`
+
+````html
+<form id="queueForm">
+    async1: <input type="text" class="js-async1" value="a" /><br />
+    async2: <input type="text" class="js-async2" value="a" /><br />
+    <button type="submit" >Check the console</button>
+</form>
+<pre id="queueFormItemFinish"></pre>
+<hr>
+<pre id="queueFormResult"></pre>
+````
+````js
+window.addEventListener('load', function () {
+    var test = new TestLogic({})
+    var eForm = document.getElementById('queueForm')
+    var eResult = document.getElementById('queueFormResult')
+    var eResultItem = document.getElementById('queueFormItemFinish')
+    var get = function (className) {return eForm.getElementsByClassName(className)[0]}
+    eForm.addEventListener('submit', function (e) {
+        e.preventDefault()
+        test.checkAll([
+            {
+                label: '(异步校验)1',
+                value: get('js-async1').value,
+                test: [
+                    'required',
+                    function (pass, fail, value) {
+                        console.info('start async1:' + new Date().getTime())
+                        setTimeout(function () {
+                            console.info('end async1:' + new Date().getTime())
+                            fail('队列错误1')
+                        }, 500)
+                    }
+                ],
+                finish: function (fail, info) {
+                    if (fail) {
+                        var msg = info.errors[0].msg
+                        eResultItem.innerHTML = eResultItem.innerHTML + '\r\n' + new Date().getTime() + ':' + msg
+                        console.log(msg)
+                    }
+                }
+            },
+            {
+                label: '(异步校验)2',
+                value: get('js-async1').value,
+                test: [
+                    'required',
+                    function (pass, fail, value) {
+                        console.info('start async2:' + new Date().getTime())
+                        setTimeout(function () {
+                            console.info('end async2:' + new Date().getTime())
+                            fail('队列错误2')
+                        }, 500)
+                    }
+                ],
+                finish: function (fail, info) {
+                    if (fail) {
+                        var msg = info.errors[0].msg
+                        eResultItem.innerHTML = eResultItem.innerHTML + '\r\n' + new Date().getTime() + ':' + msg
+                        console.log(msg)
+                    }
+                }
+            }
+        ], {
+            queue: true,
+            finish: function (fail, errors, data) {
+                console.log('[fail, errors, data]:', arguments)
                 eResult.innerHTML = errors.map(function (item) {
                     return item.msg
                 }).join('\r\n')
