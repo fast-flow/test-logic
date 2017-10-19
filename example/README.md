@@ -21,7 +21,7 @@ window.addEventListener('load', function () {
 /**/        test: ['required'],
             finish: function (fail, info) {
                 console.log('fail', fail)
-                if (fail) { console.error(info.error[0].msg) }
+                if (fail) { console.error(info.errors[0].msg) }
                 console.log('info', info)
             }
         })
@@ -47,7 +47,7 @@ window.addEventListener('load', function () {
 /**/        test: ['required', 'email'],
             finish: function (fail, info) {
                 console.log('fail', fail)
-                if (fail) { console.error(info.error[0].msg) }
+                if (fail) { console.error(info.errors[0].msg) }
                 console.log('info', info)
             }
         })
@@ -84,7 +84,7 @@ window.addEventListener('load', function () {
 /**/        ],
             finish: function (fail, info) {
                 console.log('fail', fail)
-                if (fail) { console.error(info.error[0].msg) }
+                if (fail) { console.error(info.errors[0].msg) }
                 console.log('info', info)
             }
         })
@@ -115,7 +115,7 @@ window.addEventListener('load', function () {
 /**/        ],
             finish: function (fail, info) {
                 console.log('fail', fail)
-                if (fail) { console.error(info.error[0].msg) }
+                if (fail) { console.error(info.errors[0].msg) }
                 console.log('info', info)
             }
         })
@@ -148,7 +148,7 @@ window.addEventListener('load', function () {
 /**/        ],
             finish: function (fail, info) {
                 console.log('fail', fail)
-                if (fail) { console.error(info.error[0].msg) }
+                if (fail) { console.error(info.errors[0].msg) }
                 console.log('info', info)
             }
         })
@@ -181,7 +181,7 @@ window.addEventListener('load', function () {
  /**/       ],
             finish: function (fail, info) {
                 console.log('fail', fail)
-                if (fail) { console.error(info.error[0].msg) }
+                if (fail) { console.error(info.errors[0].msg) }
                 console.log('info', info)
             }
         })
@@ -215,7 +215,7 @@ window.addEventListener('load', function () {
 /**/        ],
             finish: function (fail, info) {
                 console.log('fail', fail)
-                if (fail) { console.error(info.error[0].msg) }
+                if (fail) { console.error(info.errors[0].msg) }
                 console.log('info', info)
             }
         })
@@ -248,7 +248,7 @@ window.addEventListener('load', function () {
 /**/        ],
             finish: function (fail, info) {
                 console.log('fail', fail)
-                if (fail) { console.error(info.error[0].msg) }
+                if (fail) { console.error(info.errors[0].msg) }
                 console.log('info', info)
             }
         })
@@ -281,7 +281,7 @@ window.addEventListener('load', function () {
 /**/        ],
             finish: function (fail, info) {
                 console.log('fail', fail)
-                if (fail) { console.error(info.error[0].msg) }
+                if (fail) { console.error(info.errors[0].msg) }
                 console.log('info', info)
             }
         })
@@ -316,7 +316,7 @@ window.addEventListener('load', function () {
 /**/        ],
             finish: function (fail, info) {
                 console.log('fail', fail)
-                if (fail) { console.error(info.error[0].msg) }
+                if (fail) { console.error(info.errors[0].msg) }
                 console.log('info', info)
             }
         })
@@ -350,7 +350,7 @@ window.addEventListener('load', function () {
 /**/        ],
             finish: function (fail, info) {
                 console.log('fail', fail)
-                if (fail) { console.error(info.error[0].msg) }
+                if (fail) { console.error(info.errors[0].msg) }
                 console.log('info', info)
             }
         })
@@ -383,7 +383,7 @@ window.addEventListener('load', function () {
 /**/        ],
             finish: function (fail, info) {
                 console.log('fail', fail)
-                if (fail) { console.error(info.error[0].msg) }
+                if (fail) { console.error(info.errors[0].msg) }
                 console.log('info', info)
             }
         })
@@ -421,7 +421,7 @@ window.addEventListener('load', function () {
 /**/        ],
             finish: function (fail, info) {
                 console.log('fail', fail)
-                if (fail) { console.error(info.error[0].msg) }
+                if (fail) { console.error(info.errors[0].msg) }
                 console.log('info', info)
             }
         })
@@ -457,7 +457,7 @@ window.addEventListener('load', function () {
 /**/        ],
             finish: function (fail, info) {
                 console.log('fail', fail)
-                if (fail) { console.error(info.error[0].msg) }
+                if (fail) { console.error(info.errors[0].msg) }
                 console.log('info', info)
             }
         })
@@ -492,7 +492,7 @@ window.addEventListener('load', function () {
 /**/        ],
             finish: function (fail, info) {
                 console.log('fail', fail)
-                if (fail) { console.error(info.error[0].msg) }
+                if (fail) { console.error(info.errors[0].msg) }
                 console.log('info', info)
             }
         })
@@ -527,7 +527,7 @@ window.addEventListener('load', function () {
 /**/        ],
             finish: function (fail, info) {
                 console.log('fail', fail)
-                if (fail) { console.error(info.error[0].msg) }
+                if (fail) { console.error(info.errors[0].msg) }
                 console.log('info', info)
             }
         })
@@ -562,7 +562,7 @@ window.addEventListener('load', function () {
 /**/        ],
             finish: function (fail, info) {
                 console.log('fail', fail)
-                if (fail) { console.error(info.error[0].msg) }
+                if (fail) { console.error(info.errors[0].msg) }
                 console.log('info', info)
             }
         })
@@ -814,7 +814,7 @@ window.addEventListener('load', function () {
                 ],
                 finish: function (fail, info) {
                     if (fail) {
-                        var msg = info.errors[0].msg
+                        var msg = info.errorss[0].msg
                         eResultItem.innerHTML = eResultItem.innerHTML + '\r\n' + new Date().getTime() + ':' + msg
                         console.log(msg)
                     }
@@ -835,7 +835,7 @@ window.addEventListener('load', function () {
                 ],
                 finish: function (fail, info) {
                     if (fail) {
-                        var msg = info.errors[0].msg
+                        var msg = info.errorss[0].msg
                         eResultItem.innerHTML = eResultItem.innerHTML + '\r\n' + new Date().getTime() + ':' + msg
                         console.log(msg)
                     }
