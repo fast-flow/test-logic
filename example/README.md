@@ -761,7 +761,6 @@ window.addEventListener('load', function () {
         ], {
             every: false,
             finish: function (fail, errors, data) {
-                console.log('------------------------------')
                 console.log('## checkAll')
                 console.log('fail', fail),
                 console.error('errors', errors)

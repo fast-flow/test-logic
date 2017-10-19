@@ -147,10 +147,9 @@ it('checkAll default queue:true', function (done) {
     })
 })
 
-console.log('问题出在 lib/checkAll.js 中 callFinish ,应该统一通过 finish(param) 调用 ，这样可以避免多次调用 finish')
-console.log('想办法弄清楚 queue 为什么在 finish 中会被判断')
 
 it('checkAll every: false', function (done) {
+    let finishCount = 0
     test.checkAll([
         {
             label: '用户名',
@@ -182,15 +181,18 @@ it('checkAll every: false', function (done) {
                             pass()
                         }
                         console.log('async end')
-                    }, 500)
+                    }, 100)
                 }
             ]
         }
     ], {
         every: false,
         finish: function (fail, errors, data) {
-            console.log('------------------------------')
-            done()
+            finishCount++
         }
     })
+    setTimeout(function () {
+        expect(finishCount).to.eql(1)
+        done()
+    }, 200)
 })
