@@ -1,7 +1,10 @@
 # Documentation
 
+## new TestLogic()
 
 ## check
+
+`check` 可校验单个 `value` 的多项规则，支持[异步](../example/README.md#function-async)、**优先**，**惰性**。
 
 ````html
 <div id="abcMsg" style="color:red;" ></div>
@@ -10,32 +13,21 @@
 ````
 
 ````js
-var test = new TestLogic({
-    /*
-    rule: {
-        'email': {
-            regexp: /^\s*([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,20})\s*$/,
-            be: true,
-            msg: '{{label}}的格式不正确'
-        }
-    }
-    */
-})
+var test = new TestLogic()
 $('#email').on('input', function() {
     var value = this.value
     test.check({
         value: value,
-        label: 'email',
+        label: '邮箱',
         test: [
-            {
-                rule: 'email'
-            }
+            'email'
         ],
         finish: function (fail, data) {
             if (fail) {
                 console.error(data.errors[0].msg)
             }
             console.log(fail, data)
+            console.log('\r\n')
         }
     })
 })
@@ -43,7 +35,7 @@ $('#email').on('input', function() {
 
 ---
 
-**finish**回调参数解释
+**finish**回调参数说明
 
 
 ```js
@@ -78,4 +70,49 @@ $('#email').on('input', function() {
 ]
 ```
 
-`test` 可附带一些用户扩展参数，用于解决更复杂的业务场景 [示例](../example/index.html#every)
+`test` 可附带一些用户扩展参数，用于解决更复杂的业务场景 [示例](../example/README.md#every)
+
+## checkAll
+
+`checkAll` 可校验多个 `value` 的多项规则，支持**队列**、**惰性**
+
+````js
+test.checkAll(
+    [
+        {
+            value: 'mail',
+            label: '邮箱',
+            test: [
+                'required',
+                'email'
+            ]
+        },
+        {
+            value: '123',
+            label: '密码',
+            every: true,
+            test: [
+                'required',
+                {
+                    minLength: 4,
+                    maxLength: 20,
+                    msg:'{{label}}必须是{{minLength}}~{{maxLength}}位'
+                },
+                {
+                    regexp: /[a-z]/g,
+                    msg: '{{label}}必须包含小写字母'
+                },
+                {
+                    regexp: /[A-Z]/g,
+                    msg: '{{label}}必须包含大写字母'
+                }
+            ]
+        }
+    ],
+    {
+        finish: function (fail, errors, data) {
+            console.log(data)
+        }
+    }
+)
+````
