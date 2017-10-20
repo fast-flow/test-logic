@@ -17,7 +17,7 @@ it('fail', function (done) {
             expect(info.source[0].error).to.eql(true)
             expect(info.source[0].msg).to.eql('用户名必填')
             expect(info.errors[0].msg).to.eql('用户名必填')
-            expect(info.success.length).to.eql(0)
+            expect(info.successes.length).to.eql(0)
             done()
         }
     })
