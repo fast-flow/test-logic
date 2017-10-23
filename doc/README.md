@@ -204,3 +204,59 @@ true
     ...
 ]
 ```
+
+
+## queue
+
+校验多个项目默认是并发校验，通过配置 `queue` 可实现**队列校验**。
+
+
+````html
+<input type="text" id="queueInput" placeholder="输入并查看控制台" style="width:100%;" >
+<div id="queueResult"></div>
+````
+
+````js
+$('#queueInput').on('input', function () {
+    var value = this.value
+    var start = new Date().getTime()
+    console.log('start')
+    test.checkAll(
+        [
+            {
+                value: '1',
+                value: '异步1',
+                test: [
+                    function (pass, fail, value) {
+                        setTimeout(function () {
+                            fail('async1: ' + (new Date().getTime() - start) + 'ms')
+                        }, 300)
+                    }
+                ]
+            },
+            {
+                value: '2',
+                value: '异步2',
+                test: [
+                    function (pass, fail, value) {
+                        setTimeout(function () {
+                            fail('async2: ' + (new Date().getTime() - start) + 'ms')
+                        }, 300)
+                    }
+                ]
+            }
+        ],
+        {
+            queue: true,
+            finish: function (fail, errors) {
+                console.log(fail)
+                console.log(
+                    errors.map(function (item) {
+                        return item.msg
+                    }).join('\r\n')
+                )
+            }
+        }
+    )
+})
+````
