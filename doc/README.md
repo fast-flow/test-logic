@@ -7,9 +7,9 @@
 `check` 可校验单个 `value` 的多项规则，支持[异步](../example/README.md#function-async)、**优先**，**惰性**。
 
 ````html
-<div id="abcMsg" style="color:red;" ></div>
+<div id="abcMsg" style="color:red;" ></d    iv>
 <div id="emailMsg" style="color:red;" ></div>
-<input type="text" id="email">
+<input type="text" id="email" placeholder="输入并查看控制台" style="width:100%;" >
 ````
 
 ````js
