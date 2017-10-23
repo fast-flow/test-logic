@@ -205,6 +205,51 @@ true
 ]
 ```
 
+## checkAll.every
+
+`checkAll` 和 `check` 一样也支持 `every`，但 `checkAll` 的 `every` 默认为 `true` **默认贪婪校验**。
+配置 `every:false` 则为 懒惰校验 其中一项错误则后续校验项不进行校验。
+
+````html
+<input type="text" id="checkAllEveryInput" placeholder="输入并查看控制台" style="width:100%;" >
+<div id="checkAllEveryResult"></div>
+````
+
+````js
+$('#checkAllEveryInput').on('input', function () {
+    var value = this.value
+    test.checkAll(
+        [
+            {
+                value: '1',
+                label: '企业邮箱',
+                test: [
+                    'email'
+                ]
+            },
+            {
+                value: '2',
+                label: '个人邮箱',
+                test: [
+                    'email'
+                ]
+            }
+        ],
+        {
+/**/        every: false,
+            finish: function (fail, errors) {
+                console.log(fail)
+                console.error(
+                    errors.map(function (item) {
+                        return item.msg
+                    }).join('\r\n')
+                )
+            }
+        }
+    )
+})
+````
+
 
 ## queue
 
@@ -225,7 +270,7 @@ $('#queueInput').on('input', function () {
         [
             {
                 value: '1',
-                value: '异步1',
+                label: '异步1',
                 test: [
                     function (pass, fail, value) {
                         setTimeout(function () {
@@ -236,7 +281,7 @@ $('#queueInput').on('input', function () {
             },
             {
                 value: '2',
-                value: '异步2',
+                label: '异步2',
                 test: [
                     function (pass, fail, value) {
                         setTimeout(function () {
@@ -250,7 +295,7 @@ $('#queueInput').on('input', function () {
             queue: true,
             finish: function (fail, errors) {
                 console.log(fail)
-                console.log(
+                console.error(
                     errors.map(function (item) {
                         return item.msg
                     }).join('\r\n')
