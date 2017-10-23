@@ -19,10 +19,10 @@ window.addEventListener('load', function () {
             value: eInput.value,
             label: '用户名',
 /**/        test: ['required'],
-            finish: function (fail, info) {
+            finish: function (fail, data) {
                 console.log('fail', fail)
-                if (fail) { console.error(info.errors[0].msg) }
-                console.log('info', info)
+                if (fail) { console.error(data.errors[0].msg) }
+                console.log('data', data)
             }
         })
     })
@@ -45,10 +45,10 @@ window.addEventListener('load', function () {
             value: eInput.value,
             label: '邮箱',
 /**/        test: ['required', 'email'],
-            finish: function (fail, info) {
+            finish: function (fail, data) {
                 console.log('fail', fail)
-                if (fail) { console.error(info.errors[0].msg) }
-                console.log('info', info)
+                if (fail) { console.error(data.errors[0].msg) }
+                console.log('data', data)
             }
         })
     })
@@ -82,10 +82,10 @@ window.addEventListener('load', function () {
 /**/                pass()
 /**/            }
 /**/        ],
-            finish: function (fail, info) {
+            finish: function (fail, data) {
                 console.log('fail', fail)
-                if (fail) { console.error(info.errors[0].msg) }
-                console.log('info', info)
+                if (fail) { console.error(data.errors[0].msg) }
+                console.log('data', data)
             }
         })
     })
@@ -113,10 +113,10 @@ window.addEventListener('load', function () {
 /**/                // 语法基于 https://github.com/janl/mustache.js
 /**/            }
 /**/        ],
-            finish: function (fail, info) {
+            finish: function (fail, data) {
                 console.log('fail', fail)
-                if (fail) { console.error(info.errors[0].msg) }
-                console.log('info', info)
+                if (fail) { console.error(data.errors[0].msg) }
+                console.log('data', data)
             }
         })
     })
@@ -146,10 +146,10 @@ window.addEventListener('load', function () {
 /**/                msg: '{{label}}不可大于{{self.max}}'
 /**/            }
 /**/        ],
-            finish: function (fail, info) {
+            finish: function (fail, data) {
                 console.log('fail', fail)
-                if (fail) { console.error(info.errors[0].msg) }
-                console.log('info', info)
+                if (fail) { console.error(data.errors[0].msg) }
+                console.log('data', data)
             }
         })
     })
@@ -179,10 +179,10 @@ window.addEventListener('load', function () {
  /**/               msg: '{{label}}不可小于{{self.min}}'
  /**/           }
  /**/       ],
-            finish: function (fail, info) {
+            finish: function (fail, data) {
                 console.log('fail', fail)
-                if (fail) { console.error(info.errors[0].msg) }
-                console.log('info', info)
+                if (fail) { console.error(data.errors[0].msg) }
+                console.log('data', data)
             }
         })
     })
@@ -213,10 +213,10 @@ window.addEventListener('load', function () {
 /**/                msg: '{{label}}不可小于{{self.min}}并大于{{self.max}}'
 /**/            }
 /**/        ],
-            finish: function (fail, info) {
+            finish: function (fail, data) {
                 console.log('fail', fail)
-                if (fail) { console.error(info.errors[0].msg) }
-                console.log('info', info)
+                if (fail) { console.error(data.errors[0].msg) }
+                console.log('data', data)
             }
         })
     })
@@ -246,10 +246,10 @@ window.addEventListener('load', function () {
 /**/                msg: '{{label}}长度不可大于{{self.maxLength}},当前长度{{value.length}}'
 /**/            }
 /**/        ],
-            finish: function (fail, info) {
+            finish: function (fail, data) {
                 console.log('fail', fail)
-                if (fail) { console.error(info.errors[0].msg) }
-                console.log('info', info)
+                if (fail) { console.error(data.errors[0].msg) }
+                console.log('data', data)
             }
         })
     })
@@ -279,10 +279,10 @@ window.addEventListener('load', function () {
 /**/                msg: '{{label}}长度不可小于{{self.minLength}},当前长度{{value.length}}'
 /**/            }
 /**/        ],
-            finish: function (fail, info) {
+            finish: function (fail, data) {
                 console.log('fail', fail)
-                if (fail) { console.error(info.errors[0].msg) }
-                console.log('info', info)
+                if (fail) { console.error(data.errors[0].msg) }
+                console.log('data', data)
             }
         })
     })
@@ -314,10 +314,10 @@ window.addEventListener('load', function () {
 /**/                msg: '{{label}}长度不可小于{{self.minLength}}且大于{{self.maxLength}},当前长度{{value.length}}'
 /**/            }
 /**/        ],
-            finish: function (fail, info) {
+            finish: function (fail, data) {
                 console.log('fail', fail)
-                if (fail) { console.error(info.errors[0].msg) }
-                console.log('info', info)
+                if (fail) { console.error(data.errors[0].msg) }
+                console.log('data', data)
             }
         })
     })
@@ -348,10 +348,10 @@ window.addEventListener('load', function () {
 /**/                msg: '{{label}}长度不能大于{{self.maxByte}}个英文或{{self.maxByteHalf}}个中文,当前字节{{valueByte}}'
 /**/            }
 /**/        ],
-            finish: function (fail, info) {
+            finish: function (fail, data) {
                 console.log('fail', fail)
-                if (fail) { console.error(info.errors[0].msg) }
-                console.log('info', info)
+                if (fail) { console.error(data.errors[0].msg) }
+                console.log('data', data)
             }
         })
     })
@@ -381,10 +381,10 @@ window.addEventListener('load', function () {
 /**/                msg: '{{label}}长度不能小于{{self.minByte}}个英文或{{self.minByteHalf}}个中文,当前字节{{valueByte}}'
 /**/            }
 /**/        ],
-            finish: function (fail, info) {
+            finish: function (fail, data) {
                 console.log('fail', fail)
-                if (fail) { console.error(info.errors[0].msg) }
-                console.log('info', info)
+                if (fail) { console.error(data.errors[0].msg) }
+                console.log('data', data)
             }
         })
     })
@@ -419,10 +419,10 @@ window.addEventListener('load', function () {
 /**/                     '当前字节{{valueByte}}'
 /**/            }
 /**/        ],
-            finish: function (fail, info) {
+            finish: function (fail, data) {
                 console.log('fail', fail)
-                if (fail) { console.error(info.errors[0].msg) }
-                console.log('info', info)
+                if (fail) { console.error(data.errors[0].msg) }
+                console.log('data', data)
             }
         })
     })
@@ -455,10 +455,10 @@ window.addEventListener('load', function () {
 /**/                // regexp.test(value) should be false
 /**/            }
 /**/        ],
-            finish: function (fail, info) {
+            finish: function (fail, data) {
                 console.log('fail', fail)
-                if (fail) { console.error(info.errors[0].msg) }
-                console.log('info', info)
+                if (fail) { console.error(data.errors[0].msg) }
+                console.log('data', data)
             }
         })
     })
@@ -490,10 +490,10 @@ window.addEventListener('load', function () {
 /**/                // regexp.test(value) should be true
 /**/            }
 /**/        ],
-            finish: function (fail, info) {
+            finish: function (fail, data) {
                 console.log('fail', fail)
-                if (fail) { console.error(info.errors[0].msg) }
-                console.log('info', info)
+                if (fail) { console.error(data.errors[0].msg) }
+                console.log('data', data)
             }
         })
     })
@@ -525,10 +525,10 @@ window.addEventListener('load', function () {
 /**/                msg: '两次密码输入不相同'
 /**/            }
 /**/        ],
-            finish: function (fail, info) {
+            finish: function (fail, data) {
                 console.log('fail', fail)
-                if (fail) { console.error(info.errors[0].msg) }
-                console.log('info', info)
+                if (fail) { console.error(data.errors[0].msg) }
+                console.log('data', data)
             }
         })
     })
@@ -560,10 +560,10 @@ window.addEventListener('load', function () {
 /**/                msg: '新密码与旧密码不能相同'
 /**/            }
 /**/        ],
-            finish: function (fail, info) {
+            finish: function (fail, data) {
                 console.log('fail', fail)
-                if (fail) { console.error(info.errors[0].msg) }
-                console.log('info', info)
+                if (fail) { console.error(data.errors[0].msg) }
+                console.log('data', data)
             }
         })
     })
@@ -590,38 +590,38 @@ window.addEventListener('load', function () {
 /**/        test: [
 /**/            {
 /**/                rule: 'required',
-/**/                // 使用 $info 防止与 test-logic 未来的新接口冲突
-/**/                $info: '密码必填'
+/**/                // 使用 $data 防止与 test-logic 未来的新接口冲突
+/**/                $data: '密码必填'
 /**/            },
 /**/            {
 /**/                regexp: /(123|1234|12345|123456)/,
 /**/                be: false,
-/**/                $info: '使用连续数字作为密码不安全(123456)'
+/**/                $data: '使用连续数字作为密码不安全(123456)'
 /**/            },
 /**/            {
 /**/                regexp: /[A-Z]/,
 /**/                be: true,
-/**/                $info: '必须存在大写英文字母'
+/**/                $data: '必须存在大写英文字母'
 /**/            },
 /**/            {
 /**/                regexp: /[a-z]/,
 /**/                be: true,
-/**/                $info: '必须存在小写英文字母'
+/**/                $data: '必须存在小写英文字母'
 /**/            },
 /**/            {
 /**/                regexp: /[0-9]/,
 /**/                be: true,
-/**/                $info: '必须存在数字'
+/**/                $data: '必须存在数字'
 /**/            }
 /**/        ],
-            finish: function (fail, info) {
-                var result = info.source.map(function (item) {
+            finish: function (fail, data) {
+                var result = data.source.map(function (item) {
                         var color = item.error?'red':'gray'
-                        return '<div style="color:' + color + ';" >' + item.test.$info + '</div>'
+                        return '<div style="color:' + color + ';" >' + item.test.$data + '</div>'
                     })
                 result.push('<div>fail:' + fail +  '</div>')
                 eResult.innerHTML = result.join('')
-                console.log('info', info)
+                console.log('data', data)
             }
         })
     })
@@ -805,16 +805,16 @@ window.addEventListener('load', function () {
                 test: [
                     'required',
                     function (pass, fail, value) {
-                        console.info('start async1:' + new Date().getTime())
+                        console.data('start async1:' + new Date().getTime())
                         setTimeout(function () {
-                            console.info('end async1:' + new Date().getTime())
+                            console.data('end async1:' + new Date().getTime())
                             fail('队列错误1')
                         }, 500)
                     }
                 ],
-                finish: function (fail, info) {
+                finish: function (fail, data) {
                     if (fail) {
-                        var msg = info.errorss[0].msg
+                        var msg = data.errorss[0].msg
                         eResultItem.innerHTML = eResultItem.innerHTML + '\r\n' + new Date().getTime() + ':' + msg
                         console.log(msg)
                     }
@@ -826,16 +826,16 @@ window.addEventListener('load', function () {
                 test: [
                     'required',
                     function (pass, fail, value) {
-                        console.info('start async2:' + new Date().getTime())
+                        console.data('start async2:' + new Date().getTime())
                         setTimeout(function () {
-                            console.info('end async2:' + new Date().getTime())
+                            console.data('end async2:' + new Date().getTime())
                             fail('队列错误2')
                         }, 500)
                     }
                 ],
-                finish: function (fail, info) {
+                finish: function (fail, data) {
                     if (fail) {
-                        var msg = info.errorss[0].msg
+                        var msg = data.errorss[0].msg
                         eResultItem.innerHTML = eResultItem.innerHTML + '\r\n' + new Date().getTime() + ':' + msg
                         console.log(msg)
                     }

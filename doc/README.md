@@ -7,8 +7,6 @@
 `check` 可校验单个 `value` 的多项规则，支持[异步](../example/README.md#function-async)、**优先**，**惰性**。
 
 ````html
-<div id="abcMsg" style="color:red;" ></d    iv>
-<div id="emailMsg" style="color:red;" ></div>
 <input type="text" id="email" placeholder="输入并查看控制台" style="width:100%;" >
 ````
 
@@ -77,6 +75,62 @@ untested = source.filter(function (item){ return !item.tested })
 
 
 `test` 可附带一些用户扩展参数，用于解决更复杂的业务场景 [示例](../example/README.md#every)
+
+### every
+
+默认当一项规则校验错误后，后续规则不会被校验。配置 `every:true` 可校验所有规则。`every:false` 是**懒惰校验** `every:true` 是**贪心校验**。
+
+````html
+<input type="text" id="passwordEvery" placeholder="输入并查看控制台" style="width:100%;" >
+<div id="passwordEveryResult"></div>
+````
+
+````js
+var test = new TestLogic()
+$('#passwordEvery').on('input', function() {
+    var value = this.value
+    test.check({
+        value: value,
+        label: '密码',
+        test: [
+            {
+                rule: 'required',
+                // 使用 $info 防止与 test-logic 未来的新接口冲突
+                $info: '密码必填'
+            },
+            {
+                regexp: /(123|1234|12345|123456)/,
+                be: false,
+                $info: '使用连续数字作为密码不安全(123456)'
+            },
+            {
+                regexp: /[A-Z]/,
+                be: true,
+                $info: '必须存在大写英文字母'
+            },
+            {
+                regexp: /[a-z]/,
+                be: true,
+                $info: '必须存在小写英文字母'
+            },
+            {
+                regexp: /[0-9]/,
+                be: true,
+                $info: '必须存在数字'
+            }
+        ],
+/***/   every: true,
+        finish: function (fail, data) {
+            var result = data.source.map(function (item) {
+                var color = item.error?'red':'gray'
+                return '<div style="color:' + color + ';" >' + item.test.$info + '</div>'
+            })
+            $('#passwordEveryResult').html(result.join(''))
+            console.log(fail, data)
+        }
+    })
+})
+````
 
 ## checkAll
 
