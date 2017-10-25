@@ -19,9 +19,9 @@ window.addEventListener('load', function () {
             value: eInput.value,
             label: '用户名',
 /**/        test: ['required'],
-            finish: function (fail, data) {
+            finish: function (fail, errors, data) {
                 console.log('fail', fail)
-                if (fail) { console.error(data.errors[0].msg) }
+                if (fail) { console.error(errors[0].msg) }
                 console.log('data', data)
             }
         })
@@ -45,9 +45,9 @@ window.addEventListener('load', function () {
             value: eInput.value,
             label: '邮箱',
 /**/        test: ['required', 'email'],
-            finish: function (fail, data) {
+            finish: function (fail, errors, data) {
                 console.log('fail', fail)
-                if (fail) { console.error(data.errors[0].msg) }
+                if (fail) { console.error(errors[0].msg) }
                 console.log('data', data)
             }
         })
@@ -82,9 +82,9 @@ window.addEventListener('load', function () {
 /**/                pass()
 /**/            }
 /**/        ],
-            finish: function (fail, data) {
+            finish: function (fail, errors, data) {
                 console.log('fail', fail)
-                if (fail) { console.error(data.errors[0].msg) }
+                if (fail) { console.error(errors[0].msg) }
                 console.log('data', data)
             }
         })
@@ -113,9 +113,9 @@ window.addEventListener('load', function () {
 /**/                // 语法基于 https://github.com/janl/mustache.js
 /**/            }
 /**/        ],
-            finish: function (fail, data) {
+            finish: function (fail, errors, data) {
                 console.log('fail', fail)
-                if (fail) { console.error(data.errors[0].msg) }
+                if (fail) { console.error(errors[0].msg) }
                 console.log('data', data)
             }
         })
@@ -146,9 +146,9 @@ window.addEventListener('load', function () {
 /**/                msg: '{{label}}不可大于{{self.max}}'
 /**/            }
 /**/        ],
-            finish: function (fail, data) {
+            finish: function (fail, errors, data) {
                 console.log('fail', fail)
-                if (fail) { console.error(data.errors[0].msg) }
+                if (fail) { console.error(errors[0].msg) }
                 console.log('data', data)
             }
         })
@@ -179,9 +179,9 @@ window.addEventListener('load', function () {
  /**/               msg: '{{label}}不可小于{{self.min}}'
  /**/           }
  /**/       ],
-            finish: function (fail, data) {
+            finish: function (fail, errors, data) {
                 console.log('fail', fail)
-                if (fail) { console.error(data.errors[0].msg) }
+                if (fail) { console.error(errors[0].msg) }
                 console.log('data', data)
             }
         })
@@ -213,9 +213,9 @@ window.addEventListener('load', function () {
 /**/                msg: '{{label}}不可小于{{self.min}}并大于{{self.max}}'
 /**/            }
 /**/        ],
-            finish: function (fail, data) {
+            finish: function (fail, errors, data) {
                 console.log('fail', fail)
-                if (fail) { console.error(data.errors[0].msg) }
+                if (fail) { console.error(errors[0].msg) }
                 console.log('data', data)
             }
         })
@@ -246,9 +246,9 @@ window.addEventListener('load', function () {
 /**/                msg: '{{label}}长度不可大于{{self.maxLength}},当前长度{{value.length}}'
 /**/            }
 /**/        ],
-            finish: function (fail, data) {
+            finish: function (fail, errors, data) {
                 console.log('fail', fail)
-                if (fail) { console.error(data.errors[0].msg) }
+                if (fail) { console.error(errors[0].msg) }
                 console.log('data', data)
             }
         })
@@ -279,9 +279,9 @@ window.addEventListener('load', function () {
 /**/                msg: '{{label}}长度不可小于{{self.minLength}},当前长度{{value.length}}'
 /**/            }
 /**/        ],
-            finish: function (fail, data) {
+            finish: function (fail, errors, data) {
                 console.log('fail', fail)
-                if (fail) { console.error(data.errors[0].msg) }
+                if (fail) { console.error(errors[0].msg) }
                 console.log('data', data)
             }
         })
@@ -314,9 +314,9 @@ window.addEventListener('load', function () {
 /**/                msg: '{{label}}长度不可小于{{self.minLength}}且大于{{self.maxLength}},当前长度{{value.length}}'
 /**/            }
 /**/        ],
-            finish: function (fail, data) {
+            finish: function (fail, errors, data) {
                 console.log('fail', fail)
-                if (fail) { console.error(data.errors[0].msg) }
+                if (fail) { console.error(errors[0].msg) }
                 console.log('data', data)
             }
         })
@@ -348,9 +348,9 @@ window.addEventListener('load', function () {
 /**/                msg: '{{label}}长度不能大于{{self.maxByte}}个英文或{{self.maxByteHalf}}个中文,当前字节{{valueByte}}'
 /**/            }
 /**/        ],
-            finish: function (fail, data) {
+            finish: function (fail, errors, data) {
                 console.log('fail', fail)
-                if (fail) { console.error(data.errors[0].msg) }
+                if (fail) { console.error(errors[0].msg) }
                 console.log('data', data)
             }
         })
@@ -381,9 +381,9 @@ window.addEventListener('load', function () {
 /**/                msg: '{{label}}长度不能小于{{self.minByte}}个英文或{{self.minByteHalf}}个中文,当前字节{{valueByte}}'
 /**/            }
 /**/        ],
-            finish: function (fail, data) {
+            finish: function (fail, errors, data) {
                 console.log('fail', fail)
-                if (fail) { console.error(data.errors[0].msg) }
+                if (fail) { console.error(errors[0].msg) }
                 console.log('data', data)
             }
         })
@@ -419,9 +419,9 @@ window.addEventListener('load', function () {
 /**/                     '当前字节{{valueByte}}'
 /**/            }
 /**/        ],
-            finish: function (fail, data) {
+            finish: function (fail, errors, data) {
                 console.log('fail', fail)
-                if (fail) { console.error(data.errors[0].msg) }
+                if (fail) { console.error(errors[0].msg) }
                 console.log('data', data)
             }
         })
@@ -455,9 +455,9 @@ window.addEventListener('load', function () {
 /**/                // regexp.test(value) should be false
 /**/            }
 /**/        ],
-            finish: function (fail, data) {
+            finish: function (fail, errors, data) {
                 console.log('fail', fail)
-                if (fail) { console.error(data.errors[0].msg) }
+                if (fail) { console.error(errors[0].msg) }
                 console.log('data', data)
             }
         })
@@ -490,9 +490,9 @@ window.addEventListener('load', function () {
 /**/                // regexp.test(value) should be true
 /**/            }
 /**/        ],
-            finish: function (fail, data) {
+            finish: function (fail, errors, data) {
                 console.log('fail', fail)
-                if (fail) { console.error(data.errors[0].msg) }
+                if (fail) { console.error(errors[0].msg) }
                 console.log('data', data)
             }
         })
@@ -525,9 +525,9 @@ window.addEventListener('load', function () {
 /**/                msg: '两次密码输入不相同'
 /**/            }
 /**/        ],
-            finish: function (fail, data) {
+            finish: function (fail, errors, data) {
                 console.log('fail', fail)
-                if (fail) { console.error(data.errors[0].msg) }
+                if (fail) { console.error(errors[0].msg) }
                 console.log('data', data)
             }
         })
@@ -560,9 +560,9 @@ window.addEventListener('load', function () {
 /**/                msg: '新密码与旧密码不能相同'
 /**/            }
 /**/        ],
-            finish: function (fail, data) {
+            finish: function (fail, errors, data) {
                 console.log('fail', fail)
-                if (fail) { console.error(data.errors[0].msg) }
+                if (fail) { console.error(errors[0].msg) }
                 console.log('data', data)
             }
         })
@@ -614,7 +614,7 @@ window.addEventListener('load', function () {
 /**/                $data: '必须存在数字'
 /**/            }
 /**/        ],
-            finish: function (fail, data) {
+            finish: function (fail, errors, data) {
                 var result = data.source.map(function (item) {
                         var color = item.error?'red':'gray'
                         return '<div style="color:' + color + ';" >' + item.test.$data + '</div>'
@@ -812,9 +812,9 @@ window.addEventListener('load', function () {
                         }, 500)
                     }
                 ],
-                finish: function (fail, data) {
+                finish: function (fail, errors, data) {
                     if (fail) {
-                        var msg = data.errorss[0].msg
+                        var msg = errorss[0].msg
                         eResultItem.innerHTML = eResultItem.innerHTML + '\r\n' + new Date().getTime() + ':' + msg
                         console.log(msg)
                     }
@@ -833,9 +833,9 @@ window.addEventListener('load', function () {
                         }, 500)
                     }
                 ],
-                finish: function (fail, data) {
+                finish: function (fail, errors, data) {
                     if (fail) {
-                        var msg = data.errorss[0].msg
+                        var msg = errorss[0].msg
                         eResultItem.innerHTML = eResultItem.innerHTML + '\r\n' + new Date().getTime() + ':' + msg
                         console.log(msg)
                     }

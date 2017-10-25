@@ -20,9 +20,9 @@ $('#email').on('input', function() {
         test: [
             'email'
         ],
-        finish: function (fail, data) {
+        finish: function (fail, errors, data) {
             if (fail) {
-                console.error(data.errors[0].msg)
+                console.error(errors[0].msg)
             }
             console.log(fail, data)
             console.log('\r\n')
@@ -120,7 +120,7 @@ $('#passwordEvery').on('input', function() {
             }
         ],
 /***/   every: true,
-        finish: function (fail, data) {
+        finish: function (fail, errors, data) {
             var result = data.source.map(function (item) {
                 var color = item.error?'red':'gray'
                 return '<div style="color:' + color + ';" >' + item.test.$info + '</div>'
