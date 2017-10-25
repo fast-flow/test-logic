@@ -184,10 +184,11 @@ test.checkAll(
 ```js
 // fail 校验是否失败
 true
-// errors 校验不通过的规则（注意是不通过的 test 规则不是校验项 checkEmail 或 checkEmail）
+// errors 校验不通过的规则
+// !!! 注意是校验失败的的 test 规则不是校验项 checkEmail 或 checkEmail !!!
 [
-    {test: {…}, msg: "邮箱的格式不正确"},
-    {test: {…}, msg: "密码必须是4~20位"}
+    {msg: "邮箱的格式不正确", test: {…}},
+    {msg: "密码必须是4~20位", test: {…}}
 ]
 // data 源数据包含所有信息
 [
