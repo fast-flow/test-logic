@@ -14,11 +14,11 @@ it('function error', function (done) {
                 }
             }
         ],
-        finish: function (fail, info) {
+        finish: function (fail, errors, data) {
             expect(fail).to.eql(true)
-            expect(info.source.length).to.eql(1)
-            expect(info.source[0].error).to.eql(true)
-            expect(info.source[0].msg).to.eql('自定义错误消息 sync:' + randomText)
+            expect(data.source.length).to.eql(1)
+            expect(data.source[0].error).to.eql(true)
+            expect(data.source[0].msg).to.eql('自定义错误消息 sync:' + randomText)
             done()
         }
     })
@@ -34,10 +34,10 @@ it('function pass', function (done) {
                 pass()
             }
         ],
-        finish: function (fail, info) {
+        finish: function (fail, errors, data) {
             expect(fail).to.eql(false)
-            expect(info.source.length).to.eql(1)
-            expect(info.source[0].error).to.eql(false)
+            expect(data.source.length).to.eql(1)
+            expect(data.source[0].error).to.eql(false)
             done()
         }
     })
@@ -56,10 +56,10 @@ it('function pass async', function (done) {
                 }
             }
         ],
-        finish: function (fail, info) {
+        finish: function (fail, errors, data) {
             expect(fail).to.eql(false)
-            expect(info.source.length).to.eql(1)
-            expect(info.source[0].error).to.eql(false)
+            expect(data.source.length).to.eql(1)
+            expect(data.source[0].error).to.eql(false)
             done()
         }
     })
@@ -78,11 +78,11 @@ it('function fail async', function (done) {
                 }
             }
         ],
-        finish: function (fail, info) {
+        finish: function (fail, errors, data) {
             expect(fail).to.eql(true)
-            expect(info.source.length).to.eql(1)
-            expect(info.source[0].error).to.eql(true)
-            expect(info.source[0].msg).to.eql('自定义错误消息 async:')
+            expect(data.source.length).to.eql(1)
+            expect(data.source[0].error).to.eql(true)
+            expect(data.source[0].msg).to.eql('自定义错误消息 async:')
             done()
         }
     })

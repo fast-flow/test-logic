@@ -11,10 +11,10 @@ it('minLength', function (done) {
                 msg: '{{label}}至少{{self.minLength}}位'
             }
         ],
-        finish: function (fail, info) {
+        finish: function (fail, errors, data) {
             expect(fail).to.eql(true)
-            expect(info.source[0].error).to.eql(true)
-            expect(info.source[0].msg).to.eql('用户名至少4位')
+            expect(data.source[0].error).to.eql(true)
+            expect(data.source[0].msg).to.eql('用户名至少4位')
         }
     })
     test.check({
@@ -26,9 +26,9 @@ it('minLength', function (done) {
                 msg: '{{label}}至少{{self.minLength}}位'
             }
         ],
-        finish: function (fail, info) {
+        finish: function (fail, errors, data) {
             expect(fail).to.eql(false)
-            expect(info.source[0].error).to.eql(false)
+            expect(data.source[0].error).to.eql(false)
         }
     })
     setTimeout(done, 10)
@@ -43,10 +43,10 @@ it('maxLength', function (done) {
                 msg: '{{label}}最多{{self.maxLength}}位'
             }
         ],
-        finish: function (fail, info) {
+        finish: function (fail, errors, data) {
             expect(fail).to.eql(true)
-            expect(info.source[0].error).to.eql(true)
-            expect(info.source[0].msg).to.eql('用户名最多4位')
+            expect(data.source[0].error).to.eql(true)
+            expect(data.source[0].msg).to.eql('用户名最多4位')
         }
     })
     test.check({
@@ -58,9 +58,9 @@ it('maxLength', function (done) {
                 msg: '{{label}}最多{{self.maxLength}}位'
             }
         ],
-        finish: function (fail, info) {
+        finish: function (fail, errors, data) {
             expect(fail).to.eql(false)
-            // expect(info.source[0].error).to.eql(false)
+            // expect(data.source[0].error).to.eql(false)
         }
     })
     test.check({
@@ -73,10 +73,10 @@ it('maxLength', function (done) {
                 msg: '{{label}}至少{{self.minLength}}位，最多{{self.maxLength}}位，当前{{value}}'
             }
         ],
-        finish: function (fail, info) {
+        finish: function (fail, errors, data) {
             expect(fail).to.eql(true)
-            expect(info.source[0].error).to.eql(true)
-            expect(info.source[0].msg).to.eql('用户名至少2位，最多4位，当前1')
+            expect(data.source[0].error).to.eql(true)
+            expect(data.source[0].msg).to.eql('用户名至少2位，最多4位，当前1')
         }
     })
     setTimeout(done, 10)

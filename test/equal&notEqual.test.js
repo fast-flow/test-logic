@@ -11,11 +11,11 @@ it('equal', function (done) {
                 msg: '{{label}}不等于{{self.equal}}'
             }
         ],
-        finish: function (fail, info) {
+        finish: function (fail, errors, data) {
             expect(fail).to.eql(true)
-            expect(info.source.length).to.eql(1)
-            expect(info.source[0].error).to.eql(true)
-            expect(info.source[0].msg).to.eql('年龄不等于123')
+            expect(data.source.length).to.eql(1)
+            expect(data.source[0].error).to.eql(true)
+            expect(data.source[0].msg).to.eql('年龄不等于123')
             done()
         }
     })
@@ -30,10 +30,10 @@ it('equal pass', function (done){
                 msg: '{{label}}不等于{{self.equal}}'
             }
         ],
-        finish: function (fail, info) {
+        finish: function (fail, errors, data) {
             expect(fail).to.eql(false)
-            expect(info.source.length).to.eql(1)
-            expect(info.source[0].error).to.eql(false)
+            expect(data.source.length).to.eql(1)
+            expect(data.source[0].error).to.eql(false)
             done()
         }
     })
@@ -49,11 +49,11 @@ it('notEqual', function (done) {
                 msg: '{{label}}不能等于{{self.notEqual}}'
             }
         ],
-        finish: function (fail, info) {
+        finish: function (fail, errors, data) {
             expect(fail).to.eql(true)
-            expect(info.source.length).to.eql(1)
-            expect(info.source[0].error).to.eql(true)
-            expect(info.source[0].msg).to.eql('年龄不能等于123')
+            expect(data.source.length).to.eql(1)
+            expect(data.source[0].error).to.eql(true)
+            expect(data.source[0].msg).to.eql('年龄不能等于123')
 
             test.check({
                 value: '12',
@@ -64,10 +64,10 @@ it('notEqual', function (done) {
                         msg: '{{label}}不能等于{{self.notEqual}}'
                     }
                 ],
-                finish: function (fail, info) {
+                finish: function (fail, errors, data) {
                     expect(fail).to.eql(false)
-                    expect(info.source.length).to.eql(1)
-                    expect(info.source[0].error).to.eql(false)
+                    expect(data.source.length).to.eql(1)
+                    expect(data.source[0].error).to.eql(false)
                     done()
                 }
             })

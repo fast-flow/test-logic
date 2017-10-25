@@ -12,11 +12,11 @@ it('regexp be true', function (done) {
                 msg: '{{label}}不能包含数字'
             }
         ],
-        finish: function (fail, info) {
+        finish: function (fail, errors, data) {
             expect(fail).to.eql(true)
-            expect(info.source.length).to.eql(1)
-            expect(info.source[0].error).to.eql(true)
-            expect(info.source[0].msg).to.eql('用户名不能包含数字')
+            expect(data.source.length).to.eql(1)
+            expect(data.source[0].error).to.eql(true)
+            expect(data.source[0].msg).to.eql('用户名不能包含数字')
         }
     })
     setTimeout(done, 10)
@@ -32,11 +32,11 @@ it('regexp be true', function (done) {
                 msg: '{{label}}必须包含数字'
             }
         ],
-        finish: function (fail, info) {
+        finish: function (fail, errors, data) {
             expect(fail).to.eql(true)
-            expect(info.source.length).to.eql(1)
-            expect(info.source[0].error).to.eql(true)
-            expect(info.source[0].msg).to.eql('用户名必须包含数字')
+            expect(data.source.length).to.eql(1)
+            expect(data.source[0].error).to.eql(true)
+            expect(data.source[0].msg).to.eql('用户名必须包含数字')
         }
     })
     setTimeout(done, 10)

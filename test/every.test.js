@@ -17,15 +17,15 @@ it('every default false', function (done) {
                 msg: '{{label}}不能包含a'
             }
         ],
-        finish: function (fail, info) {
+        finish: function (fail, errors, data) {
             expect(fail).to.eql(true)
-            expect(info.source.length).to.eql(2)
-            expect(info.source[0].tested).to.eql(true)
-            expect(info.source[0].error).to.eql(true)
-            expect(info.source[0].msg).to.eql('用户名不能包含数字')
-            expect(info.source[1].tested).to.eql(false)
-            expect(info.source[1].error).to.eql(undefined)
-            expect(info.untested).to.eql(
+            expect(data.source.length).to.eql(2)
+            expect(data.source[0].tested).to.eql(true)
+            expect(data.source[0].error).to.eql(true)
+            expect(data.source[0].msg).to.eql('用户名不能包含数字')
+            expect(data.source[1].tested).to.eql(false)
+            expect(data.source[1].error).to.eql(undefined)
+            expect(data.untested).to.eql(
                 [
                     {
                         test: {
@@ -58,13 +58,13 @@ it('every true', function (done) {
                 msg: '{{label}}不能包含a'
             }
         ],
-        finish: function (fail, info) {
+        finish: function (fail, errors, data) {
             expect(fail).to.eql(true)
-            expect(info.source.length).to.eql(2)
-            expect(info.source[0].error).to.eql(true)
-            expect(info.source[0].msg).to.eql('用户名不能包含数字')
-            expect(info.source[1].error).to.eql(true)
-            expect(info.source[1].msg).to.eql('用户名不能包含a')
+            expect(data.source.length).to.eql(2)
+            expect(data.source[0].error).to.eql(true)
+            expect(data.source[0].msg).to.eql('用户名不能包含数字')
+            expect(data.source[1].error).to.eql(true)
+            expect(data.source[1].msg).to.eql('用户名不能包含a')
             done()
         }
     })

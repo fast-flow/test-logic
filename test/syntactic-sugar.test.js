@@ -8,7 +8,7 @@ it('syntactic-sugar email', function (done) {
         test: [
             'email'
         ],
-        finish: function (fail, info) {
+        finish: function (fail, errors, data) {
             expect(fail).to.eql(true)
             done()
         }
@@ -22,7 +22,7 @@ it('syntactic-sugar required', function (done) {
         test: [
             'required'
         ],
-        finish: function (fail, info) {
+        finish: function (fail, errors, data) {
             expect(fail).to.eql(true)
             done()
         }
@@ -35,7 +35,7 @@ it('syntactic-sugar required', function (done) {
         test: [
             'required'
         ],
-        finish: function (fail, info) {
+        finish: function (fail, errors, data) {
             expect(fail).to.eql(false)
             done()
         }
@@ -50,7 +50,7 @@ it('syntactic-sugar non-existent', function (done) {
             test: [
                 'non-existent'
             ],
-            finish: function (fail, info) {
+            finish: function (fail, errors, data) {
 
             }
         })

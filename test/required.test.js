@@ -12,13 +12,13 @@ it('fail', function (done) {
                 msg: '{{label}}必填'
             }
         ],
-        finish: function (fail, info) {
+        finish: function (fail, errors, data) {
             expect(fail).to.eql(true)
-            expect(info.source[0].error).to.eql(true)
-            expect(info.source[0].msg).to.eql('用户名必填')
-            expect(info.errors[0].msg).to.eql('用户名必填')
-            expect(info.successes.length).to.eql(0)
-            expect(info.untested.length).to.eql(0)
+            expect(data.source[0].error).to.eql(true)
+            expect(data.source[0].msg).to.eql('用户名必填')
+            expect(data.errors[0].msg).to.eql('用户名必填')
+            expect(data.successes.length).to.eql(0)
+            expect(data.untested.length).to.eql(0)
             done()
         }
     })
@@ -33,9 +33,9 @@ it('pass', function (done) {
                 msg: '{{label}}必填'
             }
         ],
-        finish: function (fail, info) {
+        finish: function (fail, errors, data) {
             expect(fail).to.eql(false)
-            expect(info.source[0].error).to.eql(false)
+            expect(data.source[0].error).to.eql(false)
             done()
         }
     })
@@ -53,11 +53,11 @@ it('pass ["required", "email"]', function (done) {
                 rule: 'email'
             }
         ],
-        finish: function (fail, info) {
+        finish: function (fail, errors, data) {
             expect(fail).to.eql(true)
-            expect(info.source[0].error).to.eql(false)
-            expect(info.source[1].error).to.eql(true)
-            expect(info.source[1].msg).to.eql('邮箱的格式不正确')
+            expect(data.source[0].error).to.eql(false)
+            expect(data.source[1].error).to.eql(true)
+            expect(data.source[1].msg).to.eql('邮箱的格式不正确')
             done()
         }
     })
@@ -78,12 +78,12 @@ it('fail ["required", "email"]', function (done) {
                 rule: 'number'
             }
         ],
-        finish: function (fail, info) {
+        finish: function (fail, errors, data) {
             expect(fail).to.eql(true)
-            expect(info.source[0].error).to.eql(true)
-            expect(info.source[0].msg).to.eql('用户名必填')
-            expect(info.source[1].tested).to.eql(false)
-            expect(info.source.length).to.eql(3)
+            expect(data.source[0].error).to.eql(true)
+            expect(data.source[0].msg).to.eql('用户名必填')
+            expect(data.source[1].tested).to.eql(false)
+            expect(data.source.length).to.eql(3)
             done()
         }
     })
@@ -100,9 +100,9 @@ it('no required ignore check email', function (done) {
                 rule: 'number'
             }
         ],
-        finish: function (fail, info) {
+        finish: function (fail, errors, data) {
             expect(fail).to.eql(false)
-            expect(info.source.length).to.eql(2)
+            expect(data.source.length).to.eql(2)
             done()
         }
     })
