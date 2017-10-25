@@ -265,7 +265,7 @@ $('#checkAllEveryInput').on('input', function () {
 $('#queueInput').on('input', function () {
     var value = this.value
     var start = new Date().getTime()
-    console.log('start')
+    console.log('start: 0ms')
     test.checkAll(
         [
             {
