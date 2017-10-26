@@ -84,7 +84,7 @@ it('checkAll default queue:false', function (done) {
             label: 'a',
             test: [
                 {
-                    func: function (psss, fail) {
+                    fn: function (psss, fail) {
                         setTimeout(function() {
                             fail(new Date().getTime())
                         }, 500)
@@ -97,7 +97,7 @@ it('checkAll default queue:false', function (done) {
             label: 'b',
             test: [
                 {
-                    func: function (psss, fail) {
+                    fn: function (psss, fail) {
                         setTimeout(function() {
                             fail(new Date().getTime())
                         }, 500)
@@ -121,7 +121,7 @@ it('checkAll default queue:true', function (done) {
             label: 'a',
             test: [
                 {
-                    func: function (psss, fail) {
+                    fn: function (psss, fail) {
                         setTimeout(function() {
                             fail(new Date().getTime())
                         }, 500)
@@ -134,7 +134,7 @@ it('checkAll default queue:true', function (done) {
             label: 'b',
             test: [
                 {
-                    func: function (psss, fail) {
+                    fn: function (psss, fail) {
                         setTimeout(function() {
                             fail(new Date().getTime())
                         }, 500)

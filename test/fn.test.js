@@ -8,7 +8,7 @@ it('function error', function (done) {
         label: '年龄',
         test: [
             {
-                func: function (pass, fail, value) {
+                fn: function (pass, fail, value) {
                     expect(value).to.eql('abc')
                     fail('自定义错误消息 sync:' + randomText)
                 }
@@ -48,7 +48,7 @@ it('function pass async', function (done) {
         label: '年龄',
         test: [
             {
-                func: function (pass, fail, value) {
+                fn: function (pass, fail, value) {
                     expect(value).to.eql('abc')
                     setTimeout(function () {
                         pass()
@@ -70,7 +70,7 @@ it('function fail async', function (done) {
         label: '年龄',
         test: [
             {
-                func: function (pass, fail, value) {
+                fn: function (pass, fail, value) {
                     expect(value).to.eql('abc')
                     setTimeout(function () {
                         fail('自定义错误消息 async:')
